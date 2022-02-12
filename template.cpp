@@ -39,25 +39,12 @@ int inv(int i) { if (i == 1) return 1; return (mod - ((mod / i) * inv(mod % i)) 
 int pwr(int a, int b) {a %= mod; int res = 1; while (b > 0) {if (b & 1) res = res * a % mod; a = a * a % mod; b >>= 1;} return res;}
 int gcd(int a, int b) { if (b == 0) return a; return gcd(b, a % b);}
  
- 
-int isPalindrome(string S)
-{
- 
+ // strings 
+int isPalindrome(string S){
     string P = S;
- 
-    
     reverse(P.begin(), P.end());
- 
-    // If S is equal to P
-    if (S == P) {
-        // Return "Yes"
-        return 1;
-    }
-    // Otherwise
-    else {
-        // return "No"
-        return 0;
-    }
+    if (S == P) return 1;
+    else return 0;
 }
  
 signed main(){
@@ -65,6 +52,7 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-
+        int n;
+        cin>>n;
     }
 }

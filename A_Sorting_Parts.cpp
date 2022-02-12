@@ -39,25 +39,12 @@ int inv(int i) { if (i == 1) return 1; return (mod - ((mod / i) * inv(mod % i)) 
 int pwr(int a, int b) {a %= mod; int res = 1; while (b > 0) {if (b & 1) res = res * a % mod; a = a * a % mod; b >>= 1;} return res;}
 int gcd(int a, int b) { if (b == 0) return a; return gcd(b, a % b);}
  
- 
-int isPalindrome(string S)
-{
- 
+ // strings 
+int isPalindrome(string S){
     string P = S;
- 
-    
     reverse(P.begin(), P.end());
- 
-    // If S is equal to P
-    if (S == P) {
-        // Return "Yes"
-        return 1;
-    }
-    // Otherwise
-    else {
-        // return "No"
-        return 0;
-    }
+    if (S == P) return 1;
+    else return 0;
 }
  
 signed main(){
@@ -65,27 +52,20 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-    int x, m;
-    cin>>x>>m;
-
-
-
-int large = 0; int temp; int flag=0;
-for (int i = 0; i < 32; i++) {
-    if ((1 << i) == x) { 
-        temp = (i + 1); flag=1; break;
-    }
-    if ( (1 << i) == ((1 << i) & x) ) {
-        if (i== x) {
-             large = i;
-         } else large = i + 1;
-
-    }
-         }
-if (flag==0) temp =  large + 1; 
-
-    if(temp<=m) cout<< 1+m-temp<<endl;
-    else cout<<0<<endl;
-
+        int n;
+        cin>>n;
+        vector<int> v(n);
+        for(auto &val : v){
+            cin>>val;
+        }
+            int f=0;
+        for(int i=1; i<n; i++){
+            if(v[i]<v[i-1]){
+                f=1;
+                 cout<<"YES"<<endl; break;
+            }
+        
+        }
+        if(f==0) cout<<"NO"<<endl;
     }
 }
