@@ -56,27 +56,23 @@ signed main(){
         cin>>n;
         vector<int> arr(n);
         int mini=-1, maxi=-1;
-        int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX; int f=0;
         for(int i=0; i<n; i++){
             int a;
             cin>>a;
             arr[i]=a;
-            
+            if(a!=i+1 && f==0){
+                maxi=i;
+                f=1;
+            }
         }
-        int x=0;int idx=-1;
-if(n==1){
-    cout<<arr[0]<<endl;
-}
-else{
-        while(x<n-1){
-            if(arr[x]>arr[x+1]){idx=x; break;}
-            x++;
-        }
+        
 
-        if(idx!=-1){
-            maxi=idx;
-            mn=arr[idx];
-            for(int i=idx+1; i<n; i++){
+        
+
+        if(maxi!=-1){
+            mn=arr[maxi];
+            for(int i=maxi+1; i<n; i++){
                 if(arr[i]<mn){
                     mn=arr[i];
                     mini=i;
@@ -99,7 +95,7 @@ else{
                 cout<<endl;
         }
      
-}
+
    
 
         
