@@ -61,28 +61,46 @@ signed main(){
             int a;
             cin>>a;
             arr[i]=a;
-            if(arr[i]<mn) mini=i;
+            
         }
-        for(int i=n-1; i>=0; i--){
-            if(arr[i]>mx) maxi=i;
+        int x=0;int idx=-1;
+if(n==1){
+    cout<<arr[0]<<endl;
+}
+else{
+        while(x<n-1){
+            if(arr[x]>arr[x+1]){idx=x; break;}
+            x++;
         }
-        if(mini<=maxi){
+
+        if(idx!=-1){
+            maxi=idx;
+            mn=arr[idx];
+            for(int i=idx+1; i<n; i++){
+                if(arr[i]<mn){
+                    mn=arr[i];
+                    mini=i;
+                }
+            }
+
+            while(maxi<mini){
+                swap(arr[mini], arr[maxi]);
+                mini--; maxi++;
+            }
                 for(int i=0; i<n ; i++){
                     cout<<arr[i]<<" ";
                 }
                 cout<<endl;
         }
         else{
-            while(mini<maxi){
-                swap(arr[mini], arr[maxi]);
-                mini++; maxi--;
-            }
                 for(int i=0; i<n ; i++){
                     cout<<arr[i]<<" ";
                 }
                 cout<<endl;
-
         }
+     
+}
+   
 
         
 

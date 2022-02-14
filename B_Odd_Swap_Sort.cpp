@@ -55,36 +55,35 @@ signed main(){
         int n;
         cin>>n;
         vector<int> arr(n);
-        int mini=-1, maxi=-1;
+     
         int mn = INT_MAX, mx =INT_MIN;
         for(int i=0; i<n; i++){
             int a;
             cin>>a;
             arr[i]=a;
-            if(arr[i]<mn) mini=i;
-        }
-        for(int i=n-1; i>=0; i--){
-            if(arr[i]>mx) maxi=i;
-        }
-        if(mini<=maxi){
-                for(int i=0; i<n ; i++){
-                    cout<<arr[i]<<" ";
-                }
-                cout<<endl;
-        }
-        else{
-            while(mini<maxi){
-                swap(arr[mini], arr[maxi]);
-                mini++; maxi--;
-            }
-                for(int i=0; i<n ; i++){
-                    cout<<arr[i]<<" ";
-                }
-                cout<<endl;
-
+            
         }
 
-        
+        vi v;
+        for(auto  val : arr){
+            v.pb(val);
+    }
+sort(all(v));
+int f=0;
+int i=0;
+int even=-1, odd=-1;
+even=arr[0]%2==0?0:-1;
+odd=arr[0]%2!=0?0:-1;
+while(i<n){
+    if(arr[i])
+
+    i++;
+}
+
+
+
 
     }
 }
+
+
