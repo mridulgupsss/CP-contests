@@ -7,8 +7,24 @@
 #define NFS ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
  
 #define all(x) (x).begin(), (x).end() //Forward traversal
+#define rall(x) (x).rbegin(), (x).rend() //Backward traversal
  
+ // yes no
+#define YES cout<<"YES"<<endl;
+#define NO cout<<"NO"<<endl;
 
+// debug array, map
+#define debug(v)          \
+    for (auto i : v)      \
+    {                     \
+        cout << i << " "; \
+    }                     \
+    cout << endl;
+#define debugmp(v)                                  \
+    for (auto it : v)                                \
+    {                                               \
+        cout << it.first << " " << it.second << endl; \
+    }
 
 
 // loops 
@@ -19,6 +35,7 @@
  
 // vector
 #define vi vector<int>
+#define vpii vector<pair<int, int>>
 #define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
@@ -67,63 +84,44 @@ const int inf = 1e17;
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
  
-signed main(){
- 
-    int t;
-    cin>>t;
-    while(t--){
+void solve_TestCases(){
        // int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
+        //map<int, int> mp;
+        //set<int> st;
         vector<int> v;
-        vector<int> ans(n);
        
-        for(int i=0; i<n; i++){
+          for(int i=0; i<n; i++){
             int a;
             cin>>a;
             v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
         }
-        x+=tm;
-        
 
-    }
-
-    cout<<endl;
 }
 
-    
-       
-        
 
 
 
 
+signed main(){
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve_TestCases();
     }
+
 }
+
+
+
 
 
