@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -66,64 +66,54 @@ const int inf = 1e17;
 // compare function
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
- 
+ struct point{
+    int weight, position, id;
+};
+
 signed main(){
  
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
+{
+    int n, m;
+    cin >> n >> m;
+    vector<point>points(m);
 
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
-        }
-        x+=tm;
-        
-
+    f(i, m) {
+        cin >>  points[i].position >> points[i].weight;
+        points[i].id = i + 1;
     }
 
-    cout<<endl;
-}
+    sort(points.begin(), points.end(), [] (point a, point b){
+        return a.weight < b.weight;
+    });
 
-    
-       
-        
+    int sum = 0;
+    f(i, m){
+        if(i < 2 * n) sum += points[i].weight;
+        else points.pop_back();
+    }
+
+    sort(points.begin(), points.end(), [] (point a, point b){
+        return a.position < b.position;
+    });
+
+    cout << sum << endl;
+    f(i, n){
+        cout << points[i].id << ' ' << points[2 * n - i - 1].id << endl;
+    }
+}
 
 
 
 
     }
 }
+
+
+
+
+
 
 

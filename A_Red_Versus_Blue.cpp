@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -37,20 +37,6 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e17;
  
-
- // count digits
-//  int countDigit(int n)
-// {
-//    if(n == 0)
-//      return 1;
-//     int count = 0;
-//     while (n != 0)
-//     {
-//         n = n / 10;
-//         ++count;
-//     }
-//     return count;
-// }
  
 //  // maths
 // int mod_add(int a, int b) {a = a % mod; b = b % mod; return (((a + b) % mod) + mod) % mod;}
@@ -72,51 +58,58 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+        int mn = INT_MAX, mx =INT_MIN;
+       int n,r,b;
+       cin>>n>>r>>b;
+        int diff=r-b;
+        int diff_1 =diff-1;
+        int div = diff_1/(b+1);
+        int rem =   diff_1%(b+1);
+string str="R";
+        for(int i=0; i<b; i++){
+            str.pb('B');
+            str.pb('R');
         }
-        x+=tm;
-        
+        // int put_all=-1;
+        // int not_all=-1;
+        // if(div==0){
+        //     put_all=diff_1;
+        // }
+        // else if (rem==0){
+        //     put_all = div;
+        // }
+        // else{
+        //     put_all=div;
+            
+        // }
+        string str2="";
+        for(int i=0; i<div; i++){
+            str2.pb('R');
+        }
+int idx=3;
+int kk =b;
+        while(kk--){
+            str.insert(idx, str2);
+            idx+= div+2;
+        }
+        str.insert(0, str2);
+        idx=0;
+        while(rem>0){
+            str.insert(idx, "R" );
+            for(int i=idx; i<str.size(); i++){
+                if(str[i]=='B'){
+                    idx=i+1; break;
+                }
+            }
 
-    }
-
-    cout<<endl;
+            rem--;
+        }
+for(int i=0; i<str.size(); i++){
+    cout<<str[i];
 }
+cout<<endl;
 
-    
+   
        
         
 
@@ -125,5 +118,6 @@ else{
 
     }
 }
+
 
 

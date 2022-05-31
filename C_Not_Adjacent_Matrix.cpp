@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -72,51 +73,37 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
+        if(n==1 ) cout<<"1"<<endl;
+        else if(n==2) cout<<-1<<endl;
+        else{
+            vvi arr(n, vi(n));
+            int x=1;
+            for(int i=0; i<n*n; i+=2){
+                int a =i/n;
+                int b= i%n;
+                    arr[a][b]=x++;
+            }
 
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+            int i=1;
+            while(x<=n*n){
+                int a =i/n;
+                int b= i%n;
+                    arr[a][b]=x++;
+                    i+=2; 
+            }
+
+            for(auto vec: arr){
+                for(auto val :vec){
+                    cout<<val<< " ";
+                }
+                cout<<endl;
+            }
         }
-        x+=tm;
-        
 
-    }
-
-    cout<<endl;
-}
-
-    
+   
        
         
 

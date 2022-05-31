@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -37,20 +37,6 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e17;
  
-
- // count digits
-//  int countDigit(int n)
-// {
-//    if(n == 0)
-//      return 1;
-//     int count = 0;
-//     while (n != 0)
-//     {
-//         n = n / 10;
-//         ++count;
-//     }
-//     return count;
-// }
  
 //  // maths
 // int mod_add(int a, int b) {a = a % mod; b = b % mod; return (((a + b) % mod) + mod) % mod;}
@@ -62,7 +48,19 @@ const int inf = 1e17;
 // // string palindrome 
 // int isPalindrome(string S){string P = S; reverse(P.begin(), P.end()); if (S == P) return 1; else return 0; }
 
-
+// count
+int countDigit(int n)
+{
+   if(n == 0)
+     return 1;
+    int count = 0;
+    while (n != 0)
+    {
+        n = n / 10;
+        ++count;
+    }
+    return count;
+}
 // compare function
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
@@ -72,51 +70,30 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
+
+int ans =INT_MAX;
+if(countDigit(n)==2){
+    ans = n%10;
+}
+else {
+
+
+  while (n != 0) {
+       int dig =n%10;
+       ans= min(ans, dig);
+       n /= 10;
+  }
+
+  
 
 }
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
-        }
-        x+=tm;
-        
 
-    }
+cout<<ans<<endl;
 
-    cout<<endl;
-}
-
-    
+   
        
         
 
@@ -125,5 +102,6 @@ else{
 
     }
 }
+
 
 

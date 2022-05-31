@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -72,51 +72,30 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
+       map<int, int> mp;
+        vector<int> v(n);
         for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+            cin>>v[i];
+            mp[v[i]]++;
         }
-        x+=tm;
-        
 
-    }
+        int ans =0;
+        int count=0;
+        for(auto itr : mp){
+            if(itr.second>=2) ans++;
+            else {
+                count++;
+            }
+        }
 
-    cout<<endl;
-}
+        if(count>0) {ans++;count--;}
+         ans +=count/2;
 
-    
+
+        cout<<ans<<endl;
        
         
 
@@ -125,5 +104,6 @@ else{
 
     }
 }
+
 
 

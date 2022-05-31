@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -69,61 +69,58 @@ const int inf = 1e17;
  
 signed main(){
  
-    int t;
-    cin>>t;
-    while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+	int t;
+	cin >> t;
+	while(t--){
+		int n;
+		cin >> n;
+		vi arr(n);
+		unordered_map<int, int> freq;
+		for(int i=0; i<n; i++)
+			{
+               cin >> arr[i];
+			   freq[arr[i]]++;
+			}
+ 
+		sort(all(arr));
+        vector<int>  temp(arr.size()); 
+int f=0;
+		for(auto it: freq){
+			if(it.second>n/2){
+				cout<<"NO"<<endl;
+				f=1;
+				break;
+			}
+		}
+if(f==0){
+		if(n%2==1 ) cout<<"NO"<<endl;
+		
+		else{
+        int j=n-1;
+        int i=1;
+        while(j>=0){
+            temp[i]=arr[j--];
+            if(i==n-1 || i==n-2){
+                i=0;
+            }
+            else i+=2;
         }
-        x+=tm;
-        
+ 
+		
 
-    }
-
-    cout<<endl;
+			cout << "YES\n";
+			for(int i=0; i<n; i++)
+				cout << temp[i] << " ";
+			cout << "\n";
+		}
 }
 
-    
-       
-        
 
 
-
-
-    }
+		
+ 
+ 
+	}
 }
 
 

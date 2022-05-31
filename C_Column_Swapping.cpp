@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,7 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
+#define vvi vector<vector<int>> 
 #define pb push_back
 #define fi first
 #define se second
@@ -37,20 +38,6 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e17;
  
-
- // count digits
-//  int countDigit(int n)
-// {
-//    if(n == 0)
-//      return 1;
-//     int count = 0;
-//     while (n != 0)
-//     {
-//         n = n / 10;
-//         ++count;
-//     }
-//     return count;
-// }
  
 //  // maths
 // int mod_add(int a, int b) {a = a % mod; b = b % mod; return (((a + b) % mod) + mod) % mod;}
@@ -72,51 +59,69 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
+        int mn = INT_MAX, mx =INT_MIN;
+       int n,m;
+       cin>>n>>m;
+       vvi vv(n, vi(m));
+
+       f(i, n){
+           f(j, m){
+               cin>>vv[i][j];
+
            }
        }
-if(f==1){
-    cout<<-1<<endl;
 
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+ 
+           vi index;
+           f(i, n){
+               vi temp = vv[i];
+               sort(temp.begin(), temp.end());
+               int flag2=0;
+               f(j, m){
+                   if(vv[i][j]!=temp[j]){
+                       index.pb(j);
+                       flag2=1;
+                   }
+               }
+               if(flag2==1) break;
+           }
+
+    if(index.size()==0){
+        cout<<1<<" "<<1<<endl;
+    }
+    else if(index.size()>2){
+        cout<<-1<<endl;
+
+    }
+    else{
+        f(i, n){
+            swap(vv[i][index[0]], vv[i][index[1]]);
         }
-        x+=tm;
-        
 
+
+int flag3=0;
+        f(i, n){
+               vi temp = vv[i];
+               sort(temp.begin(), temp.end());
+            f(j, m){
+                if(vv[i][j]!=temp[j]){
+                    flag3=1; break;
+                }
+            }
+        }
+
+
+        if(flag3==1){
+            cout<<-1<<endl;
+        }
+        else{
+            cout<<index[0]+1<<" "<<index[1]+1<<endl;
+        }
     }
+       
 
-    cout<<endl;
-}
-
-    
+  
+   
        
         
 
@@ -125,5 +130,6 @@ else{
 
     }
 }
+
 
 

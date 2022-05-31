@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -37,20 +37,6 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e17;
  
-
- // count digits
-//  int countDigit(int n)
-// {
-//    if(n == 0)
-//      return 1;
-//     int count = 0;
-//     while (n != 0)
-//     {
-//         n = n / 10;
-//         ++count;
-//     }
-//     return count;
-// }
  
 //  // maths
 // int mod_add(int a, int b) {a = a % mod; b = b % mod; return (((a + b) % mod) + mod) % mod;}
@@ -72,51 +58,41 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+        int mn = INT_MAX, mx =INT_MIN;
+       int n,m;
+       cin>>n>>m;
+       int ans=0;
+       int i=1, j=1;
+        if((n==1 && m>2) || (m==1 && n>2)){
+            ans=-1;
         }
-        x+=tm;
-        
+        else{
+      int sh = n<m?n:m;
+      sh--;
+      ans=sh*2;
+        if(n==m){
 
-    }
+        }
+        else {
+            int diff=  abs(n-m)-1;
+            if(diff==0) ans++;
+            else{
+              ans++;
+              if(diff%2==0){
+                  ans+=(diff/2)*4;
+              }
+              else{
+                  ans+=3;
+                  diff--;
+                  ans+=(diff/2)*4;
+              }
+            }
 
-    cout<<endl;
-}
+        }
+        }
 
-    
+        cout<<ans<<endl;
+
        
         
 
@@ -125,5 +101,6 @@ else{
 
     }
 }
+
 
 

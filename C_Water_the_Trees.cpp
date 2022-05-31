@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -37,20 +37,6 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e17;
  
-
- // count digits
-//  int countDigit(int n)
-// {
-//    if(n == 0)
-//      return 1;
-//     int count = 0;
-//     while (n != 0)
-//     {
-//         n = n / 10;
-//         ++count;
-//     }
-//     return count;
-// }
  
 //  // maths
 // int mod_add(int a, int b) {a = a % mod; b = b % mod; return (((a + b) % mod) + mod) % mod;}
@@ -72,52 +58,102 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
         vector<int> v;
-        vector<int> ans(n);
-       
         for(int i=0; i<n; i++){
             int a;
             cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
+            v.pb(a); 
+            if(a>mx)mx=a;
+         }
 
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
-        }
-        x+=tm;
+        // int  s=0;
+        // for(auto val: v){
+        //     s+=mx-val;
+        // }
         
-
-    }
-
-    cout<<endl;
-}
-
     
+    int to=0, on=0;
+int i=0;
+        while(i<n){
+            int diff=mx-v[i];
+            if(diff%2==0){
+                to+=diff/2;
+            }
+            else{
+                on++;
+                 to+=(diff-1)/2;
+
+            }
+
+
+ i++;
+        }
+            int ans =to+on;
+            if(on==to){
+
+            }
+                else if(on>to) ans+=on-to-1;
+                else{
+             int diff=(abs(to-on));
+             ans-=diff;
+
+             diff*=2;
+
+             
+                int x=diff/3;
+                x*=2;
+                ans+=x;
+            
+              
+                if(diff%3!=0) ans+=(diff%3);
+                
+             }
+           mx=mx+1;
+           to=0 , on=0;
+           i=0;
+ while(i<n){
+            int diff=mx-v[i];
+            if(diff%2==0){
+                to+=diff/2;
+            }
+            else{
+                on++;
+                 to+=(diff-1)/2;
+
+            }
+
+
+ i++;
+        }
+            int ans2 =to+on;
+            if(on==to){
+
+            }
+                else if(on>to) ans2+=on-to-1;
+                else{
+             int diff=(abs(to-on));
+             ans2-=diff;
+
+             diff*=2;
+
+             
+                int x=diff/3;
+                x*=2;
+                ans2+=x;
+            
+              
+                if(diff%3!=0) ans+=(diff%3);
+                
+             }
+           
+         
+
+        cout<<min(ans,ans2)<<endl;
        
+     
         
 
 
@@ -125,5 +161,6 @@ else{
 
     }
 }
+
 
 

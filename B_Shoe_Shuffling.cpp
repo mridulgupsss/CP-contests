@@ -75,10 +75,9 @@ signed main(){
        // int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
+        map<int, int> mp;
         //unordered_set<int, int> st;
         vector<int> v;
-        vector<int> ans(n);
        
         for(int i=0; i<n; i++){
             int a;
@@ -98,22 +97,18 @@ if(f==1){
 
 }
 else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
-        }
-        x+=tm;
-        
-
-    }
-
-    cout<<endl;
+    int idx=0;
+ for(int i=0; i<n-1; i++){
+     if(v[i]==v[i+1]){
+         cout<<i+2<<" ";
+     }
+     else {
+         cout<<idx+1<<" ";
+         idx=i+1;
+     }
+     
+ }
+ cout<<idx+1<<endl;
 }
 
     

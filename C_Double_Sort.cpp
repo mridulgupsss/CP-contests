@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -72,52 +72,60 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
         vector<int> v;
-        vector<int> ans(n);
-       
+        vector<int> v11;
         for(int i=0; i<n; i++){
             int a;
             cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
+            v.pb(a); 
+            v11.pb(a); 
+        }
+        sort(v11.begin(), v11.end());
+        
+            vector<int> v2;
+            vector<int> v22;
+        for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v2.pb(a); 
+            v22.pb(a); 
+        }
+        sort(v22.begin(), v22.end());
+   int f2=0;
+   vector<pair<int, int>> ans;
+   for(int i=0; i<n; i++){
+       if(v[i]!=v11[i] || v2[i]!=v22[i]){
+           int f=0;
+           for(int j=i+1; j<n; j++){
+               if(v[j]==v11[i] && v2[j]==v22[i]){
+                   f=1;
+                   swap(v[i],v[j]);
+                   swap(v2[i],v2[j]);
+                   ans.push_back({i, j});
+                   break;
+               }
+           }
+
+           if(f==0){
+                f2=-1;
+                break;
            }
        }
-if(f==1){
-    cout<<-1<<endl;
+   }
 
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
-        }
-        x+=tm;
-        
 
-    }
-
-    cout<<endl;
-}
-
-    
-       
+   if(f2==-1){
+       cout<<-1<<endl;
+   }
+   else{
+       cout<<ans.size()<<endl;
+       for(auto val : ans){
+           cout<<val.first+1<<" "<<val.second+1<<endl;
+       }
+   }
         
 
 
@@ -125,5 +133,6 @@ else{
 
     }
 }
+
 
 

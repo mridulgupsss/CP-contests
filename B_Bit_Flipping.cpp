@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -37,20 +37,6 @@ using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e17;
  
-
- // count digits
-//  int countDigit(int n)
-// {
-//    if(n == 0)
-//      return 1;
-//     int count = 0;
-//     while (n != 0)
-//     {
-//         n = n / 10;
-//         ++count;
-//     }
-//     return count;
-// }
  
 //  // maths
 // int mod_add(int a, int b) {a = a % mod; b = b % mod; return (((a + b) % mod) + mod) % mod;}
@@ -67,56 +53,84 @@ const int inf = 1e17;
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
  
+
+ void flip_bits(string &s, int idx){
+    for(int i=0; i<s.size(); i++){
+        if(i!=idx){
+            if(s[i]=='1') s[i]='0';
+            else s[i]='1';
+        }
+    }
+ }
 signed main(){
  
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
-        vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
+        int mn = INT_MAX, mx =INT_MIN;
+       int n,k;
+       cin>>n>>k;
+       string s ;
+       cin>>s;
+       vector<int> v(n, 0);
+       for(int i=0; i<n; i++){
+           if((k>0) && ((s[i]=='1' && k%2!=0 ) || (s[i]=='0' && k%2==0 ))){
+               k--;
+               v[i]++;
+            //    flip_bits(s, i);
            }
+
        }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+        int extraaa=k;
+        while(k>0){
+            //  flip_bits(s, s.size()-1);
+             v[n-1]++;
+             k--;
         }
-        x+=tm;
+            int idx=-1;
+        for(int i=0; i<n; i++){
+
+            if(v[i]!=0) idx=i;
+        }
         
+        if(idx==-1){
+            while(n--){
+                cout<<"0";
+            }
+            cout<<endl;
+            
+        }
+        else{
+            if(idx==n-1){
+                for(int i=0; i<n-1; i++){
+                    cout<<"1";
+                }
+                if(extraaa%2!=0) cout<<"0";
+                else cout<<"1";
+            }
+            else{
+                for(int i=0; i<=idx; i++){
+                    cout<<"1";
+                }
+                for(int i=idx+1; i<n; i++){
+                    char ch = s[i]=='0'?'1':'0';
+                    cout<<ch;
+                }
+            }
+            cout<<endl;
+        }
 
-    }
 
-    cout<<endl;
-}
 
-    
+
+        for(auto val: v){
+            cout<<val<<" ";
+        }
+        cout<<endl;
+
+
+     
+        
        
         
 
@@ -125,5 +139,6 @@ else{
 
     }
 }
+
 
 

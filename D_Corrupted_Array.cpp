@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -72,51 +73,52 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
+       int s=0;
         vector<int> v;
-        vector<int> ans(n);
-       
-        for(int i=0; i<n; i++){
+       map<int, int> mp;
+        for(int i=0; i<n+2; i++){
             int a;
             cin>>a;
-            v.pb(a);
+            v.pb(a); s+=a;
             mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
         }
-        x+=tm;
-        
+int f=0;
+int ans ;
+int ss;
+        for(int i=0; i<n+2; i++){
+            int check  = s-v[i];
+            if(check%2!=0) continue;
+            int sum = (s-v[i])/2;
+            mp[v[i]]--;
+            if(mp.find(sum)!=mp.end() && mp[sum]!=0){
 
+                ans =v[i];
+                f=1;
+                ss=sum;
+                break;
+            }
+            mp[v[i]]++;
+        }
+      if(f==0){
+          cout<<-1<<endl;
+      }  
+    else {
+        int f1=0, f2=0;
+        for(int i=0; i<n+2; i++){
+            if(v[i]==ss &&f1==0){
+                f1=1;
+            }
+            else if(v[i]==ans && f2==0){
+                f2=1;
+            }
+            else cout<<v[i]<<" ";
+        }
+        cout<<endl;
     }
-
-    cout<<endl;
-}
-
-    
+   
        
         
 

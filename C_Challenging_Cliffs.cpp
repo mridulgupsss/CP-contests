@@ -11,6 +11,7 @@
 
 
 
+
 // loops 
 #define f(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
@@ -19,7 +20,6 @@
  
 // vector
 #define vi vector<int>
-#define vvi vector<vector<int>>
 #define pb push_back
 #define fi first
 #define se second
@@ -72,51 +72,41 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-       // int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        unordered_map<int, int> mp;
-        //unordered_set<int, int> st;
         vector<int> v;
-        vector<int> ans(n);
-       
         for(int i=0; i<n; i++){
             int a;
             cin>>a;
-            v.pb(a);
-            mp[a]++;
-       }
-       int f=0;
-       for(auto it: mp){
-           if(it.second==1){
-               f=1;
-               break;
-           }
-       }
-if(f==1){
-    cout<<-1<<endl;
-
-}
-else{
-    int i=0; int x=0;
-    while(i<n){
-        int a =mp[v[i]];
-        i+=a;
-        int tm =a;
-       
-        while(a--){
-            cout<<a+x<<" ";
-            a--;
+            v.pb(a); 
         }
-        x+=tm;
-        
+        sort(v.begin(), v.end());
+        vi ans (n);
+        int idx=-1;
+        int diff=INT_MAX;
+        for(int i=1; i<n; i++){
+            if(abs(v[i]-v[i-1]) < diff){
+                idx=i-1;
+                diff=abs(v[i]-v[i-1]);
+            }
+        }
 
-    }
+        ans[0]=v[idx];
+        ans[n-1]=v[idx+1];
+        int j=idx+2;
+        int i=1;
+        while(i<n-1){
+            if(j==n ){
+                j=0;
+            }
+            ans[i++]=v[j++];
+        }
 
-    cout<<endl;
-}
-
-    
+        for(auto val : ans){
+            cout<<val<<" ";
+        }
+        cout<<endl;
        
         
 
@@ -125,5 +115,4 @@ else{
 
     }
 }
-
 
