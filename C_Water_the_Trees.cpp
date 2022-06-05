@@ -58,7 +58,7 @@ signed main(){
     int t;
     cin>>t;
     while(t--){
-        int mn = INT_MAX, mx =INT_MIN;
+        int mn = INT_MAX, mxx=INT_MIN;
        int n;
        cin>>n;
         vector<int> v;
@@ -66,21 +66,22 @@ signed main(){
             int a;
             cin>>a;
             v.pb(a); 
-            if(a>mx)mx=a;
+            if(a>mxx)mxx=a;
          }
 
         // int  s=0;
         // for(auto val: v){
         //     s+=mx-val;
         // }
-        
+        int final=1e18;
     
-    int to=0, on=0;
-int i=0;
-        while(i<n){
+      for(int mx=mxx; mx<=mxx+1; mx++){
+ int to=0, on=0;
+
+        for(int i=0; i<n; i++){
             int diff=mx-v[i];
             if(diff%2==0){
-                to+=diff/2;
+                to+=(diff/2);
             }
             else{
                 on++;
@@ -89,72 +90,34 @@ int i=0;
             }
 
 
- i++;
+ 
         }
-            int ans =to+on;
+             int ans =2* min(on , to);
+            int extras = abs(on-to);
             if(on==to){
 
             }
-                else if(on>to) ans+=on-to-1;
+                else if(on>to) ans=2*on -1;
                 else{
-             int diff=(abs(to-on));
-             ans-=diff;
 
-             diff*=2;
+
+             extras*=2;
 
              
-                int x=diff/3;
+                int x=extras/3;
                 x*=2;
                 ans+=x;
             
               
-                if(diff%3!=0) ans+=(diff%3);
+                if(extras%3!=0) ans+=(extras%3);
                 
              }
-           mx=mx+1;
-           to=0 , on=0;
-           i=0;
- while(i<n){
-            int diff=mx-v[i];
-            if(diff%2==0){
-                to+=diff/2;
-            }
-            else{
-                on++;
-                 to+=(diff-1)/2;
+ 
+           final =min(final, ans);
 
-            }
-
-
- i++;
-        }
-            int ans2 =to+on;
-            if(on==to){
-
-            }
-                else if(on>to) ans2+=on-to-1;
-                else{
-             int diff=(abs(to-on));
-             ans2-=diff;
-
-             diff*=2;
-
-             
-                int x=diff/3;
-                x*=2;
-                ans2+=x;
-            
-              
-                if(diff%3!=0) ans+=(diff%3);
-                
-             }
-           
-         
-
-        cout<<min(ans,ans2)<<endl;
-       
+      }       
      
-        
+        cout<<final<<endl;
 
 
 

@@ -83,32 +83,46 @@ const int inf = 1e17;
 // compare function
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
-
-
-
+ 
 
 
 signed main(){
-
-
-    int t;
-    cin >> t;
-    while (t--)
-    {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
+       int n,a,b,c;
+       cin>>n>>a>>b>>c;
         //map<int, int> mp;
         //set<int> st;
-        vector<int> v;
-       
-          for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-     
+        vector<int> dp(n+1, 0);
+        dp[min({a,b,c})]=1;
+        dp[0]=0; 
+        for(int i=min({a,b,c})+1; i<n+1; i++){
+            int mx=0;
+            if(i==a || i==b || i==c) mx=1;
+            if(i-a>=1 && dp[i-a]>0){
+                if(dp[i-a]+1>mx){
+                    mx=dp[i-a]+1;
+                }
+            }
+
+
+            if(i-b>=1 && dp[i-b]>0){
+                if(dp[i-b]+1>mx){
+                    mx=dp[i-b]+1;
+                }
+            }
+
+            if(i-c>=1 && dp[i-c]>0){
+                if(dp[i-c]+1>mx){
+                    mx=dp[i-c]+1;
+                }
+            }
+
+            if(mx!=0){
+                dp[i]=mx;
+            }
+
         }
-    }
+        cout<<dp[n]<<endl;
 
 }
 

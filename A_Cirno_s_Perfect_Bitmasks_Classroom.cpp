@@ -98,18 +98,17 @@ signed main(){
        // int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        //map<int, int> mp;
-        //set<int> st;
-        vector<int> v;
-       
-          for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-     
+        if(n==1) cout<<3<<endl;
+        else if(n%2==0){
+            if((n&(n-1))!=0){
+            int mask = n&(-n);
+            cout<<mask<<endl;
+            }
+            else cout<<n+1<<endl;
         }
-    }
+        else cout<<1<<endl;
 
+}
 }
 
 

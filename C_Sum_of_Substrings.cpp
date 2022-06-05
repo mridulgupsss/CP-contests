@@ -83,6 +83,8 @@ const int inf = 1e17;
 // compare function
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
+ 
+
 
 
 
@@ -90,28 +92,50 @@ const int inf = 1e17;
 
 signed main(){
 
-
-    int t;
-    cin >> t;
-    while (t--)
-    {
+int t ;
+cin>>t;
+while(t--){
        // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
-        //map<int, int> mp;
-        //set<int> st;
-        vector<int> v;
-       
-          for(int i=0; i<n; i++){
-            int a;
-            cin>>a;
-            v.pb(a);
-     
-        }
-    }
+       int n, k;
+       cin>>n>>k;
+       string s;
+       cin>>s;
+       int st=0, en=0;
+      for(int i=n-1; i>=0; i--){
+          if(s[i]=='1'){
+            if(k>=n-i-1){en=1;
+            k-=(n-i-1);
+            s[i]='0';
+            s[n-1]='1';
+            
+            }
 
+              break;
+          }
+      }
+      for(int i=0; i<n-1; i++){
+          if(s[i]=='1'){
+              if(k>=i ){
+                  st=1;
+              }
+              
+              break;
+          }
+      }
+int cnt=0;
+       for(auto ch: s){
+           if(ch=='1') cnt++;
+       }
+      cnt-=(st+en);
+       cnt*=11;
+       if(en==1) cnt+=1;
+       if(st==1) cnt+=10;
+
+       cout<<cnt<<endl;
+       
 }
 
+}
 
 
 

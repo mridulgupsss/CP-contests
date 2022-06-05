@@ -84,6 +84,14 @@ const int inf = 1e17;
 // bool sortbysec(pair<long long int, long long int> &a, pair<long long int, long long int> &b) { return (a.second < b.second); } 
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
 
+int funct(int n ){
+    int x=1;
+    while(n%4==0){
+        n/=2;
+        x++;
+    }
+    return x;
+}
 
 
 
@@ -98,8 +106,8 @@ signed main(){
        // int mn = INT_MAX, mx =INT_MIN;
        int n;
        cin>>n;
-        //map<int, int> mp;
-        //set<int> st;
+       int ev=0,od=0;
+       
         vector<int> v;
        
           for(int i=0; i<n; i++){
@@ -108,8 +116,36 @@ signed main(){
             v.pb(a);
      
         }
+ 
+       
+int ans=0, odd=0;
+vi even;
+for(auto &x: v){
+    if(x&1) odd++;
+    else{
+        if(x%2==0 && x%4!=0){
+            ans++; odd++;
+        }
+        else even.pb(x);
     }
+}
+int f=0;
+if(odd>0){
+    cout<<ans+even.size()<<endl;
+    f=1;
+}
+if(f==0){
+    int mn=INT_MAX;
+    for(auto &x: even){
+        int z=funct(x);
+        mn = min(mn, z);
+    }
+    cout<<mn + even.size()-1<<endl;
+}
 
+
+
+}
 }
 
 

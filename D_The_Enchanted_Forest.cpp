@@ -96,17 +96,39 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n;
-       cin>>n;
+       int n, k;
+       cin>>n>>k;
         //map<int, int> mp;
         //set<int> st;
+        int s=0;
         vector<int> v;
        
           for(int i=0; i<n; i++){
             int a;
             cin>>a;
             v.pb(a);
+            s+=a;
      
+        }
+
+        if(k<=n){
+            int sum=0;
+            for(int i=0; i<k-1; i++){
+                sum+=v[i];
+            }
+            int mx=0;
+            for(int j=0, i=k-1; i<n; i++, j++){
+                sum+=v[i];
+                mx=max(mx, sum);
+                sum-=v[j];
+            }
+
+            int ans =mx + (k*(k-1))/2;
+            cout<<ans<<endl;
+        }
+        else{
+            int ans = s+n*(k-n) + (n*(n-1))/2;
+            cout<<ans<<endl;
         }
     }
 
