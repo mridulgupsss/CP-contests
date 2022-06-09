@@ -14,8 +14,8 @@
 #define loop(i,a,b) for (int i = a; i < b; i++)
 #define bloop(i,a,b) for (int i = a ; i>=b;i--)
 #define vi vector<int>
-#define vpii vector<pair<int, int>>
 #define vvi vector<vector<int>>
+#define vpii vector<pair<int, int>>
 #define pb push_back
 #define fi first
 #define se second 
@@ -25,17 +25,8 @@
 #define debug(a, b, c) cout<<a<<" "<<b<<" "<<c<<endl; 
 #define debug(a, b, c, d) cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;  
 #define debug(a, b, c, d, e) cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e<<endl;  
-#define debugarr(v)       \
-    for (auto i : v)      \
-    {                     \
-        cout << i << " "; \
-    }                     \
-    cout << endl;
-#define debugmp(v)                                  \
-    for (auto it : v)                                \
-    {                                               \
-        cout << it.first << " " << it.second << endl; \
-    }
+#define debugarr(v) for(auto i : v){cout<<i<<" ";}cout<<endl;
+#define debugmp(v) for(auto it:v){cout<<it.first<<" "<<it.second<<endl;}
 using namespace std;
 const int mod = 1e9 + 7;
 const int inf = 1e18;
