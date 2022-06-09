@@ -16,10 +16,13 @@
 #define vi vector<int>
 #define vvi vector<vector<int>>
 #define vpii vector<pair<int, int>>
+#define pii pair<int, int>
 #define pb push_back
 #define fi first
 #define se second 
 #define endl "\n"
+#define lcm(a, b) int lcm(int a, int b) { return (a / __gcd(a, b)) * b; }
+#define setbits(x) __builtin_popcountll(x)
 #define debug(a) cout<<a<<endl;
 #define debug(a, b) cout<<a<<" "<<b<<endl;
 #define debug(a, b, c) cout<<a<<" "<<b<<" "<<c<<endl; 
