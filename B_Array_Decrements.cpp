@@ -85,7 +85,7 @@ const int inf = 1e17;
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
 
 
-         
+
 
 
 signed main(){
@@ -96,11 +96,63 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
+       int n;
+       cin>>n;
+        //map<int, int> mp;
+        //set<int> st;
+        vector<int> v;
        
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v.pb(a);
+     
+        }
+        vector<int> v2;
+       
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v2.pb(a);
+     
+        }
+int f=1; int diff;
+for(int i=0; i<n; i++){
+    if(v2[i]!=0){
+        diff=v[i]-v2[i];
+        f=0; break;
+    }
+}
 
+if(f==1){
+    cout<<"YES"<<endl;
+}
+else{
+    int f2=1;
+    if(diff<0) cout<<"NO"<<endl;
+    else{
+        for(int i=0; i<n; i++){
+            int curr = v[i]- v2[i];
+            if(curr<0){
+                f2=0;
+                break;
+            }
+            if(v2[i]==0){
+                if(curr>diff){
+                    f2=0; break;
+                }
+            }
+            else{
+                if(curr!=diff){
+                    f2=0; break;
+                }
+            }
+        }
 
+        if(f2==0) cout<<"NO"<<endl;
+        else cout<<"YES"<<endl;
+    }
+}
 
 
         

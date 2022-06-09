@@ -85,9 +85,24 @@ const int inf = 1e17;
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
 
 
-         
 
 
+int finding_rotations(string str)
+{
+    string string_tempo = str.back()+str.substr(0, str.size()-1);
+        int ans=1;
+         while(string_tempo!=str)
+        {
+                  ans ++;
+                  string_tempo=string_tempo.back()+string_tempo.substr(0, string_tempo.size()-1);
+        }
+         return ans;
+}
+int lcd(int x,int y)
+{
+    int ret = (x*y)/__gcd(x,y);
+    return ret;
+}
 signed main(){
 
 
@@ -96,10 +111,53 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
-       
+       int n;
+       cin>>n;
+       string s ;
+       cin>>s;
+       //map<int, int> mp;
+       //set<int> st;
+     
+        vector<int> v;
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v.pb(--a);
+        }
+        vvi  rotations;
+        set<int> visited;
 
+        for(int i=0; i<n; i++){
+            if(visited.find(v[i])!=visited.end()) continue;      
+
+            vi small = {i};
+            visited.insert(i);
+            int idx=i;
+            while(v[idx]!=i){
+                small.pb(v[idx]);
+                idx=v[idx];
+                visited.insert(v[idx]);
+            }
+            
+            rotations.pb(small);
+
+        }
+        vector<string> strr;
+
+        for(auto vec : rotations){
+            string str ;
+            for(auto val : vec){
+                str.pb(s[val]);
+            }
+            strr.pb(str);
+        }
+
+        int ans =1;
+        for(auto str : strr){
+            ans=lcd(ans, finding_rotations(str));
+        }
+
+        cout<<ans<<endl;
 
 
 

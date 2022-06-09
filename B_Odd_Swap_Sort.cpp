@@ -10,8 +10,8 @@
 #define rall(x) (x).rbegin(), (x).rend() //Backward traversal
  
  // yes no
-#define YES cout<<"YES"<<endl;
-#define NO cout<<"NO"<<endl;
+#define YES cout<<"YES"<<endl
+#define NO cout<<"NO"<<endl
 
 // debug array, map
 #define debug(v)          \
@@ -85,7 +85,7 @@ const int inf = 1e17;
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
 
 
-         
+
 
 
 signed main(){
@@ -95,15 +95,37 @@ signed main(){
     cin >> t;
     while (t--)
     {
-       // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
-       
+       int n;
+       cin>>n;
 
+        vector<int> v(n);
+          vi odd, even;
 
+          for(int i=0; i<n; i++){
+            cin>>v[i];
+            if((v[i]%2)==0) even.pb(v[i]);
+            else odd.pb(v[i]);
+            
+        }
+        int f=0;
+        for(int i=0;i<odd.size()-1; i++){
+            if(odd[i]>odd[i+1]){
+                f=1; break;
+            }
+        }
 
+        if(f==0){
+        for(int i=0;i<even.size()-1; i++){
+            if(even[i]>even[i+1]){
+                f=1; break;
+            }
+        }    
+        }
 
-        
+        if(f==0) YES;
+        else NO;
+         
+
     }
 
 }

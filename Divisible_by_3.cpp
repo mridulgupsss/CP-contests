@@ -96,9 +96,19 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
+       int a,b;
+       cin>>a>>b; int minus=0, plus=0;
+   int ans =0;
+   while( (a%3!=0) && (b%3!=0)){
+       if(a>b){
+           a=abs(a-b);
+       }
+       else b=abs(a-b);
+       ans++;
+   }
+   cout<<ans<<endl;
        
+
 
 
 

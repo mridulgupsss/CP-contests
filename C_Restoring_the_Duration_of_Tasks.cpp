@@ -85,7 +85,7 @@ const int inf = 1e17;
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
 
 
-         
+
 
 
 signed main(){
@@ -96,12 +96,47 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
+       int n;
+       cin>>n;
+        //map<int, int> mp;
+        //set<int> st;
+        vector<int> v;
        
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v.pb(a);
+     
+        }
+        vector<int> ff;
+       
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            ff.pb(a);
+     
+        }
+        vi ans(n);
+        ans[0] = ff[0]-v[0];
 
 
+queue<int> q; q.push(ff[0]);
+  for(int i=1; i<n;i++){
+      while(q.size()>0 && q.front()<v[i]){
+          q.pop();
+      }
+      if(q.size()==0){
+          ans[i]=ff[i]-v[i];
+      }
+      else{
+          ans[i]=ff[i]-q.front();
+          q.pop();
+      }
 
+      q.push(ff[i]);
+  }
+
+debug(ans);
 
         
     }

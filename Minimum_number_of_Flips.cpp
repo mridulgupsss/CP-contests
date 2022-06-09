@@ -96,10 +96,27 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
+       int n;
+       cin>>n; int minus=0, plus=0;
+        //map<int, int> mp;
+        //set<int> st;
+        vector<int> v;
        
-
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v.pb(a);
+            if(a==1) plus++;
+            else minus++;
+     
+        }
+        int diff = abs(minus-plus);
+        if(diff%2==1){
+            cout<<-1<<endl;
+        }
+        else {
+            cout<< diff/2<<endl;
+        }
 
 
 

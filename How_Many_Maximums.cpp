@@ -96,8 +96,27 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
+       int n;
+       cin>>n; 
+        //map<int, int> mp;
+        //set<int> st;
+       string s;
+       cin>>s;
+
+       int i=0;
+      int ans=0;
+      if(s[n-2]=='0') ans =1;
+      else ans =0;
+      while(i<n-1){
+          if(s[i]=='1'){
+              ans++;
+              while(i<n-1 && s[i]=='1') i++;
+          }
+          else {
+              while(i<n-1 && s[i]=='0') i++;
+          }
+      }
+cout<<ans <<endl;
        
 
 

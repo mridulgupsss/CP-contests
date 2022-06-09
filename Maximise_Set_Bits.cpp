@@ -98,7 +98,36 @@ signed main(){
        // int mn = INT_MAX, mx =INT_MIN;
        int n,s;
        cin>>n>>s;
+       int ans =  0;
+       int i=0;
+       while(true){
+        if(s>=((1LL<<i)*n)){
+            ans+=n;
+            s-=((1LL<<i)*n);
+
+        }
+        else{
+            int mnn = s/(1LL<<i);
+            s-=(1LL<<i)*mnn;
+            ans+=mnn;
+            if(s>0){
+                s=(1LL<<i)-s;
+                for(int j=0; j<=30; j++){
+                    int mask = 1LL<<j;
+                    if(mask & s) {
+                        ans-=1;
+                    }
+                   
+                }
+                 ans=ans+1;
+            }
+            break;
+        }
+
+        i++;
+       }
        
+       cout<<ans<<endl;
 
 
 

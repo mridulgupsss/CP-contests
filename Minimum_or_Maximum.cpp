@@ -96,12 +96,38 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
+       int n;
+       cin>>n;
+        //map<int, int> mp;
+        //set<int> st;
+        vector<int> v;
        
+          for(int i=0; i<n; i++){
+            int a;
+            cin>>a;
+            v.pb(a);
+     
+        }
+int f=0;
+     int mn=v[0], mx=v[0];
+     for(int i=1; i<n; i++){
+         if(v[i]<mx && v[i]>mn){
+             f=1;
+             cout<<"NO"<<endl;
+             break;
+         }
+         else if(v[i]>=mx){
+             mx=v[i];
+         }
+         else if(v[i]<=mn){
+             mn=v[i];
+         }
+        
+     }
 
-
-
+     if(f==0){
+         cout<<"YES"<<endl;
+     }
 
         
     }

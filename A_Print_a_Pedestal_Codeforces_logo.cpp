@@ -85,7 +85,7 @@ const int inf = 1e17;
 // bool cmp(pair<long long int a, pair<long long int b){if (a.first > b.first)return true;else if (a.first == b.first){if (a.second > b.second)return true;}return false;}
 
 
-         
+
 
 
 signed main(){
@@ -96,12 +96,29 @@ signed main(){
     while (t--)
     {
        // int mn = INT_MAX, mx =INT_MIN;
-       int n,s;
-       cin>>n>>s;
-       
+       int n;
+       cin>>n;
+        //map<int, int> mp;
+        //set<int> st;
+
+if(n==7) cout<<2<<" "<<4<<" "<<1<<endl;
+else{
+   int a , b, c;
+   b= n/2;
+   a=b-1;
+   if((n&1)==0) c=1;
+   else c=2;
+   while(c<a){
+       c+=2;
+       a--;
+   }
+   a++;
+   c-=2;
+   b=a+1;
+   cout<<a<<" "<<b<<" "<<c<<endl;
 
 
-
+}
 
         
     }
