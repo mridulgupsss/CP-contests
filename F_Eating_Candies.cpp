@@ -75,35 +75,47 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       string s; cin>>s;
-       s+="W";
-
-        int flow=0; int ans =1;
-        int r=0, b=0;
-        int itr=0;
-        while(itr<n+1 && s[itr]=='W'){
-            itr++;
-        }
+       int n; cin>>n;
+       vi pre(n);
+       vi suff(n); 
+       vector<int> v; 
+       for(int i=0; i<n; i++){
+           int a; cin>>a;
+           v.pb(a);
         
-        for(int i=itr; i<n+1; i++){
-            if(s[i]=='W'){
-                if(r==0 || b==0){
-                    ans=0; break;
-                }
-                r=0; b=0;
-                while(i<n+1 && s[i]=='W') i++;
-                i--;
-                
+           
+       }
+       int s1=0, s2=0; int ans =0; int f_i=1, fj=1;
+        int i=0; int j=n-1;
+        while(i<j){
+            if(f_i==1) s1+=v[i];
+            if(fj==1) s2+=v[j];
+
+            if(s1==s2){
+                ans=i+1+n-j;
+                i++;
+                j--;
+                f_i=1;
+                fj=1;
+
+            }
+            else if(s1<s2){
+                i++;
+                f_i=1;
+                fj=0;
             }
             else{
-                if(s[i]=='R') r++;
-                else b++;
+                j--;
+                fj=1;
+                f_i=0;
+
             }
         }
 
-        if(ans==0) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
+        
+
+       cout<<ans<<endl;
+
 
   }
 }

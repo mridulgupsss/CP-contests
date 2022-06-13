@@ -24,10 +24,10 @@
 #define lcm(a, b) int lcm(int a, int b) { return (a / __gcd(a, b)) * b; }
 #define setbits(x) __builtin_popcountll(x)
 #define debug(a) cout<<a<<endl;
-#define debug(a, b) cout<<a<<" "<<b<<endl;
-#define debug(a, b, c) cout<<a<<" "<<b<<" "<<c<<endl; 
-#define debug(a, b, c, d) cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;  
-#define debug(a, b, c, d, e) cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e<<endl;  
+#define debug2(a, b) cout<<a<<" "<<b<<endl;
+#define debug3(a, b, c) cout<<a<<" "<<b<<" "<<c<<endl; 
+#define debug4(a, b, c, d) cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;  
+#define debug5(a, b, c, d, e) cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e<<endl;  
 #define debugarr(v) for(auto i : v){cout<<i<<" ";}cout<<endl;
 #define debugmp(v) for(auto it:v){cout<<it.first<<" "<<it.second<<endl;}
 using namespace std;
@@ -76,13 +76,13 @@ signed main(){
     cin >> t;
     while(t--){
        int n; cin>>n; 
-       vector<int> v;
+       vector<int> v; int s=0;
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
+           s+=a;
            
        }
-       
 
 
   }

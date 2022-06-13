@@ -72,40 +72,39 @@ const int inf = 1e18;
 signed main(){
 
 
-    int t;
-    cin >> t;
-    while(t--){
-       int n; cin>>n; 
-       string s; cin>>s;
-       s+="W";
+       int n, q; cin>>n>>q;vi pre; 
+       vector<int> v; int s=0;
+       for(int i=1; i<=n; i++){
+           int a; cin>>a;
+           v.pb(a);
 
-        int flow=0; int ans =1;
-        int r=0, b=0;
-        int itr=0;
-        while(itr<n+1 && s[itr]=='W'){
-            itr++;
-        }
-        
-        for(int i=itr; i<n+1; i++){
-            if(s[i]=='W'){
-                if(r==0 || b==0){
-                    ans=0; break;
-                }
-                r=0; b=0;
-                while(i<n+1 && s[i]=='W') i++;
-                i--;
-                
-            }
-            else{
-                if(s[i]=='R') r++;
-                else b++;
-            }
-        }
+       }
+       sort(rall(v));
+ for(auto val: v){
+           s+=val;
+           pre.pb(s);
+ }      
+       
+    vpii pp;
+    for(int i=0; i<q; i++){
+        int  a, b;
+        cin>>a>>b;
+        pp.push_back({a, b});
+    }
+int mx= INT_MIN;
+    for(int i=0; i<q; i++){
+        int a =pp[i].fi;
+        int b =pp[i].se;
 
-        if(ans==0) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
+int scd = a-1;
+int fst = scd -b;
+int ans =  pre[scd];
+if(fst>=0) ans  = ans - pre[fst];
+cout<<ans<<endl;
 
-  }
+    }
+
+  
 }
 
 

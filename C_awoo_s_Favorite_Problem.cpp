@@ -76,34 +76,82 @@ signed main(){
     cin >> t;
     while(t--){
        int n; cin>>n; 
-       string s; cin>>s;
-       s+="W";
+       string ss,tt;
+       cin>>tt>>ss;
+       int f=1;
+       int i=0;
 
-        int flow=0; int ans =1;
-        int r=0, b=0;
-        int itr=0;
-        while(itr<n+1 && s[itr]=='W'){
-            itr++;
-        }
-        
-        for(int i=itr; i<n+1; i++){
-            if(s[i]=='W'){
-                if(r==0 || b==0){
-                    ans=0; break;
+       f(j, n){
+        if('c'==ss[j]){
+            f=0;
+            if(i<j){
+                i=j;
+            }
+            while(i<n){
+                if('c'==tt[i]){
+                    f=1;
+                    swap(tt[i], tt[j]);
+                    break;
                 }
-                r=0; b=0;
-                while(i<n+1 && s[i]=='W') i++;
-                i--;
-                
+                if('b'!=tt[i]){
+                    break;
+                }
+
+                i++;
+
             }
-            else{
-                if(s[i]=='R') r++;
-                else b++;
+            if(f==0){
+                break;
+            }
+        }
+       }
+
+
+       f=1;
+       i=0;
+       f(j, n){
+        if('b'==ss[j]){
+            f=0;
+            if(i<j){
+                i=j;
+            }
+            while(i<n){
+                if('b'==tt[i]){
+                    f=1;
+                    swap(tt[i], tt[j]);
+                    break;
+                }
+                if('a'!=tt[i]){
+                    break;
+                }
+
+                i++;
+
+            }
+            if(f==0){
+                break;
+            }
+        }
+       }
+
+
+        int ans =1;
+        for(int i=0; i<n; i++){
+            if(ss[i]!=tt[i]){
+                ans=0;
+                break;
+
+
             }
         }
 
-        if(ans==0) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
+        if(ans==1) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+
+    
+
+    
+
 
   }
 }

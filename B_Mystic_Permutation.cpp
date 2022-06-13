@@ -76,35 +76,36 @@ signed main(){
     cin >> t;
     while(t--){
        int n; cin>>n; 
-       string s; cin>>s;
-       s+="W";
+       vector<int> v(n);
+       for(int i=1; i<=n; i++){
+           v[i-1]=i;
+           int f=0;
+           if(n==1){
+            int x ;
+            cin>>x;
+            cout<<-1<<endl;
+            f=1;
 
-        int flow=0; int ans =1;
-        int r=0, b=0;
-        int itr=0;
-        while(itr<n+1 && s[itr]=='W'){
-            itr++;
-        }
-        
-        for(int i=itr; i<n+1; i++){
-            if(s[i]=='W'){
-                if(r==0 || b==0){
-                    ans=0; break;
+           }
+           vi v2(n);
+           for(int i=0; i<n; i++){
+            cin>>v2[i];
+           }
+           sort(all(v));
+           f(i, n){
+            if(v[i]==v2[i]){
+                if(i!=n-1){
+                    swap(v[i], v[i+1]);
                 }
-                r=0; b=0;
-                while(i<n+1 && s[i]=='W') i++;
-                i--;
-                
+                else{
+                    swap(v[n-1], v[n-2]);
+                }
             }
-            else{
-                if(s[i]=='R') r++;
-                else b++;
-            }
-        }
+            else continue;
+           }
 
-        if(ans==0) cout<<"NO"<<endl;
-        else cout<<"YES"<<endl;
-
+           debugarr(v);
+       }
   }
 }
 
