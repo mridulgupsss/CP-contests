@@ -75,14 +75,31 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-           
-       }
+       int a,b; cin>>a>>b; 
+       	int extra = abs(a-b);
+
+	if(b>a){
+		
+		while(extra--){
+			cout<<1;
+		}
+		while(a--){
+			cout<<"01";
+		}
+		
+	}
+  else{
+	
+		while(extra--){
+			cout<<0;
+		}
+		while(b--){
+			cout<<"10";
+		}
+		
+	}
+
+   cout<<endl;
 
 
 

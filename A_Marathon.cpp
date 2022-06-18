@@ -75,16 +75,12 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-           
-       }
-
-
+       int n,a,b,c; cin>>n>>a>>b>>c; 
+        int ans =0;
+        if(a>n) ans++;
+        if(b>n) ans++;
+        if(c>n) ans++;
+        cout<<ans<<endl;
 
   }
 }

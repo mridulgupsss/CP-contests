@@ -75,16 +75,25 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
+       int n; cin>>n; map<int, int> mp; 
        vector<int> v; int s=0;
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
-           s+=a;
+           mp[a]++;
+
            
        }
 
-
+int ans =n; int ct=0;
+   for(auto it: mp){
+    if(it.se>1){
+        ct+=(it.se-1);
+    }
+   }
+    ans-=ct;
+    if(ct%2==1) ans--;
+    debug(ans);
 
   }
 }
