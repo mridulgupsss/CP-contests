@@ -73,36 +73,37 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
+       int n; cin>>n; int f=0;
+       vector<int> v; map<int,int> mp; int ct=0;
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
-           s+=a;
+           mp[a]++;
+           if(a==0) {
+            ct++; f=1;
+           }
        }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+       int op=0; n-=ct;
+       for(auto it: mp){
+        if(it.fi!=0){
+        if(it.se%2==0){
+            op+=(it.se/2);
+            n-=it.se; f=1;
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
+        else if(it.se>1){
+            n-=it.se+1;
+            int val =it.se-1;
+            op+=(val/2); f=1;
         }
-    }
-}
+        }
 
-
+       }
+  op+=n;if(f==0) op++;
 
  
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+debug(op)
+// debugarr(v)
 
   }
 }

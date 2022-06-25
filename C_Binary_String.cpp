@@ -73,36 +73,48 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+string s ; cin>>s;
+int zero=0, one=0;
+for(auto ch: s){
+    if(ch=='1') one++;
+    else zero++;
+}
+int n =s.size();
+int ct0 = zero, ct1=0;
+int i=0, j=s.size()-1;
+while(ct0>ct1){
+    if(s[i]=='1' && s[j]=='1'){
+        int f=1;
+
+        if(i<n-1 && s[i+1]=='0'){
+            ct1++; i++; f=0;    
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
+        else if(j>=1 && s[j-1]=='0'){
+            ct1++; j--; f=0;
         }
+
+        if(f==0) continue;
+    }
+
+    if(s[i]=='0'){
+        ct0--; i++;
+
+    }
+    else if(s[j]=='0'){
+  ct0--; j--;
+    }
+    else if(s[i]=='1'){
+        ct1++; i++;
+    }
+    else {
+        ct1++; j--;
     }
 }
 
-
-
  
-
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+int ans = max(ct1, ct0);
+ debug(ans)
+// debugarr(v)
 
   }
 }

@@ -70,40 +70,18 @@ const int inf = 1e18;
 
 // Actual Code Here : 
 signed main(){
-    int t;
-    cin >> t;
-    while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
-        }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
-}
-
-
-
- 
-
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
-
+  int t;
+  cin >> t;
+  while (t--) {
+    int x, y;
+    cin >> x >> y;
+    int d = x * x + y * y;
+    int r = 0;
+    while (r * r < d) ++r;
+    int ans = 2;
+    if (r * r == d) ans = 1;
+    if (x == 0 && y == 0) ans = 0; 
+    cout << ans << '\n';
   }
 }
 

@@ -73,36 +73,42 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
+       int n,m,k; cin>>n>>m>>k;
+       string aa, bb;
+       cin>>aa>>bb;
+       sort(all(aa)); 
+       sort(all(bb));
+
+       int i=0, j=0;
+       string ans="";
+       int k1=0, k2=0;
+       while(i<n && j<m){
+          if(aa[i]<bb[j] ){
+            if(k1<k){
+              cout<<aa[i]; i++;k1++;k2=0;
+            }
+            else{
+              cout<<bb[j]; j++;k1=0;k2++;
+            }
+          }
+          else if(aa[i]>=bb[j]){
+            if(k2<k){
+              cout<<bb[j]; j++;k2++;k1=0;
+            }
+            else {
+              cout<<aa[i]; i++;k2=0;k1++;
+            }
+          }
+        
        }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
-        }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
-}
 
 
+cout<<endl;
 
  
 
 // debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+// debugarr(v)
 
   }
 }

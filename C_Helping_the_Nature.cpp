@@ -73,36 +73,44 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
-        }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
+int n ; cin>>n;
+vi v(n);
+f(i,n){
+  cin>>v[i];
 }
+int operations=0;
+for(int i=1; i<n; i++){
+  v[i]-=operations;
+  if(v[i]>v[i-1]){
+      int op=v[i]-v[i-1];
+      v[i]=v[i-1];
+      operations+=op;
+  }
+
+}
+
+int ans =operations;
+operations=0;
+for(int i=n-2; i>=0; i--){
+  v[i]-=operations;
+  if(v[i]>v[i+1]){
+      int op=v[i]-v[i+1];
+      v[i]=v[i+1];
+      operations+=op;
+  }
+
+}
+
+ans+=operations;
+ans+=abs(v[0]);
+
 
 
 
  
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+ debug(ans)
+// debugarr(v)
 
   }
 }

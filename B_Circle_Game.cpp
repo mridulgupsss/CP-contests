@@ -74,35 +74,52 @@ signed main(){
     cin >> t;
     while(t--){
        int n; cin>>n; 
-       vector<int> v; int s=0;
+       vector<int> v; int s=0; int mn=LONG_LONG_MAX;
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
            s+=a;
+          
        }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+
+if(n==1){cout<<"Mike"<<endl;}
+else{
+    if(n==3||n==5){
+        cout<<"Mike"<<endl;
+    }
+    else{
+        int rem = n&1;
+        if(rem==0){
+            int i=0;
+            int idx;
+            while(i<n){
+                if(mn>v[i]){
+                    mn=v[i];
+                    idx=i%2;
+                }
+
+                i++;
+            }
+
+            rem = idx%2; int flag=1;
+            if(rem==0){
+                flag=0;
+            }
+
+            if(flag==0){
+                cout<<"Joe"<<endl;
+            }
+            else if(flag==1) cout<<"Mike"<<endl;
         }
         else{
-            
-            swap(a[i], a[i+1]);
-            
+            cout<<"Mike"<<endl;
         }
     }
 }
-
-
-
  
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+// debug()
+// debugarr(v)
 
   }
 }

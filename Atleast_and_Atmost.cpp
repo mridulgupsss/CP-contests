@@ -74,35 +74,57 @@ signed main(){
     cin >> t;
     while(t--){
        int n; cin>>n; 
-       vector<int> v; int s=0;
+       int s[n+6], x=0; 
+       vector<int> v;
+      vpii extras(n+6);
+      f(i, n+5){
+        extras[i].fi=0;
+        extras[i].se=0;
+      }
+     
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
-        }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
-}
 
+           
+       }
+        
+       int idxx=0;
+       while(idxx<n){
+
+        int a = v[idxx++];
+           
+           extras[a].se+=n-a;
+       }
+       idxx=0;
+       while(idxx<n){
+        extras[v[idxx++]].fi++; 
+        x=n+x-v[idxx-1]; 
+       }
+
+        
+       f(i, n+5){
+        s[i]=extras[i].fi;
+       }
+
+       int idx=n;
+       while(idx>=0){
+            s[idx]+=s[idx+1];
+            idx--;
+       }
+
+       idx=0;
+       while(idx<n){
+        int ans1 = x-extras[idx].se+s[idx+1];
+        int ans2 = s[idx++ +1];
+        debug2(ans1,ans2)
+       }
 
 
  
 
 // debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+// debugarr(v)
 
   }
 }

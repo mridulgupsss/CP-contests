@@ -24,6 +24,7 @@
 #define lcm(a, b) int lcm(int a, int b) { return (a / __gcd(a, b)) * b; }
 #define setbits(x) __builtin_popcountll(x)
 #define debug(a) cout<<a<<endl;
+#define debugg(a) cout<<a;
 #define debug2(a, b) cout<<a<<" "<<b<<endl;
 #define debug3(a, b, c) cout<<a<<" "<<b<<" "<<c<<endl; 
 #define debug4(a, b, c, d) cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;  
@@ -73,36 +74,58 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
+       int n;  string s; cin>>n>>s;
+       int s0= s[0]-'0';
+       bool flag=true;
+       if(s0!=9){
+        flag=false;
+        for(auto ch: s){
+            int val = ch-'0';
+            int chh = 9-val;
+            debugg(chh);
+        }
+        cout<<endl;
        }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+
+      
+    if(flag){
+        int bit=1;
+        string ans=""; 
+        reverse(all(s));
+        for(auto ch: s){
+            int val = ch + (!bit) -'0';
+            if(val>1){
+                int value = 11-val;
+                char chh=value+'0';
+                ans.pb(chh);
+                bit=0;
+
+            }
+            else{
+                int value = 1-val;
+                char chh=value+'0';
+                ans.pb(chh);
+                bit=1;
+            }
+
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
+
+            int sz=ans.size();
+            for(int i=sz-1; i>=0; i--){
+                char ch =ans[i];
+                debugg(ch);
+            }
+            cout<<endl;
     }
-}
+    
+
 
 
 
  
 
 // debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+// debugarr(v)
 
   }
 }

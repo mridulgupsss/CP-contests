@@ -73,36 +73,28 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+       int n;  int m; cin>>n>>m; 
+ int ii, jj; 
+        vvi v(n , vi (m)); int mx=LONG_LONG_MIN;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                cin>>v[i][j];
+                if(v[i][j]>mx){
+                    mx=v[i][j];
+                    ii=i; jj=j;
+                }
+            }
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
-}
+
+ int ans ;
+int h = max(n-ii, ii+1);
+int w = max(m-jj, jj+1);
+ans =h*w;
 
 
+debug(ans);
 
- 
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
 
   }
 }

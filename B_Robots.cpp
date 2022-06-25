@@ -73,36 +73,45 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
+       int n,m; cin>>n>>m; 
+       vector<string> v(n); int s=0;
        for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
+        cin>>v[i];           
        }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+       int up=6, left=6;
+       for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            char ch = v[i][j];
+            if(ch=='R'){
+                left = min(j+1, left);
+                up= min(i+1, up);
+            }
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
-}
+       }
 
+       bool ans =false;
+
+       for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            char ch = v[i][j];
+            if(ch=='R'){
+                int u = i;
+                int l =j;
+              if(u<up && l<left){
+                ans =true ;
+                break;
+              }
+            }
+        }
+       }
+
+       cout<<(ans==true?"YES":"NO")<<endl;
 
 
  
 
 // debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+// debugarr(v)
 
   }
 }

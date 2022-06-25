@@ -73,36 +73,68 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
-        }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
+        
+       int n; cin>>n;
+       string s ;
+        cin>>s;
+int ans =LONG_LONG_MAX;
+int pre[n+2], suf[n+2];
+for(int i=0; i<n+2; i++){
+    pre[i]=0; suf[i]=0;
 }
 
+if(s[0]==')'){
+    pre[0]=0;
+}
+else pre[0]=1;
+if(s[n-1]=='('){
+    suf[n-1]=0;
+}
+else suf[n-1]=1;
+
+
+int idx=n-2;
+while(idx>=0){
+    char ch =s[idx];
+    int a =suf[idx+1];
+    int b;
+    if(ch==')') b=1;
+    else b=0;
+    suf[idx] = a+b+suf[idx];
+
+
+    idx--;
+}
+
+idx=1;
+while(idx<n){
+    char ch =s[idx];
+    int a =pre[idx-1];
+    int b;
+    if(ch==')') b=0;
+    else b=1;
+    pre[idx] = a+b+pre[idx];
+
+
+    idx++;
+}
+
+idx=0;
+while(idx<n){
+    int value = min(suf[idx+1], pre[idx]);
+    int check_for=n-2*value;
+    if(check_for<ans){
+        ans=check_for;
+    }
+
+    idx++;
+}
 
 
  
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+ debug(ans)
+// debugarr(v)
 
   }
 }

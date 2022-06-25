@@ -73,36 +73,26 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+        int ans;
+       int n, k; cin>>n>>k;
+       int mask =1<<n;
+        int temp=1;
+        while(n--){
+            temp=temp*4;            
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
-        }
-    }
-}
+        ans=temp;
+     mask--;
+     mask=mask*3;
+     ans=ans-mask;
+        ans--;
+        
 
 
 
  
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+ debug(ans)
+// debugarr(v)
 
   }
 }

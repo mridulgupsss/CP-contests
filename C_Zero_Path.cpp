@@ -16,6 +16,7 @@
 #define vi vector<int>
 #define vvi vector<vector<int>>
 #define vpii vector<pair<int, int>>
+#define vvpii vector<vector<pair<int, int>>>
 #define pii pair<int, int>
 #define pb push_back
 #define fi first
@@ -73,25 +74,49 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n; 
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-       }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+       int n,m; cin>>n>>m; 
+      vvi v(n, vi(m));
+      vvpii dp(n, vpii(m));
+      for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            int a ;
+            cin>>a;
+            v[i][j]=a;
+
         }
-        else{
-            
-            swap(a[i], a[i+1]);
-            
+      } 
+
+       if((n+m-1)%2==1) cout<<"NO"<<endl;
+       else{
+         for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(i==0 &&j==0){
+                    dp[i][j]={v[i][j], v[i][j]};
+                }
+                else if(i==0){
+                    dp[i][j]={v[i][j] + dp[i][j-1].fi, v[i][j] + dp[i][j-1].fi};
+                }
+                else if(j==0){
+                    dp[i][j]={v[i][j] + dp[i-1][j].fi, v[i][j] + dp[i-1][j].fi};
+                }
+                else{
+                    dp[i][j].fi=min(dp[i-1][j].fi, dp[i][j-1].fi) +v[i][j];
+                    dp[i][j].se=max(dp[i-1][j].se, dp[i][j-1].se)+v[i][j];
+                }
+            }
+         }
+        int flag=1;
+        for(int i=dp[n-1][m-1].fi; i<=dp[n-1][m-1].se; i+=2){
+            if(i==0) flag=0;
         }
+
+         if(flag==0) cout<<"YES"<<endl;
+         else cout<<"NO"<<endl;
+            
+            }
+
+
+
     }
 }
 
@@ -99,12 +124,8 @@ for(int i=0;i<n; i++){
 
  
 
-// debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
 
-  }
-}
+
+  
 
 

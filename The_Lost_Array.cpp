@@ -75,34 +75,70 @@ signed main(){
     while(t--){
        int n; cin>>n; 
        vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
+       for(int i=0; i<n+1; i++){
            int a; cin>>a;
            v.pb(a);
-           s+=a;
+           s^=a;
+           
        }
-vi a = v;
-sort(all(a));
-for(int i=0;i<n; i++){
-    if(a[i]==v[i]){
-        if(i==n-1){
-            swap(a[i], a[i-1]);
+       int m=n+1; vi ans;
+if(n&1){
+    int flag=1;
+    f(i, m){
+        int value = s^v[i];
+        if(flag==0){
+
         }
         else{
-            
-            swap(a[i], a[i+1]);
-            
+            if(value!=0){
+
+            }
+            else{
+                flag=0;
+                continue;
+
+            }
         }
+
+        ans.pb(value);
     }
 }
+else{
+    int xorr=s;
+ f(i, m){
+    xorr=xorr^v[i];
+    if(xorr==0){
 
+    }
+    else break;
+ }
+ int flag=1;
+ f(i, m){
+    int value = xorr^v[i];
+    if(flag==1){
+        
+    }
+    else{
+        if(value!=0){
+
+        }
+        else{
+            flag=0;
+            continue;
+        }
+    }
+
+    ans.pb(value);
+ }
+}
+
+debugarr(ans);
 
 
  
 
 // debug(ans)
-if(n==1) cout<<-1<<endl;
-else
- debugarr(a)
+// debugarr(v)
 
   }
 }
