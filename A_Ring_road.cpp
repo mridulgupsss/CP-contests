@@ -70,29 +70,22 @@ const int inf = 1e18;
 // Actual Code Here : 
 signed main(){
 
-
-    int t;
-    cin >> t;
-    while(t--){
-       int n; cin>>n;
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-           
-       }
-
-
-
-
-
+	int n,ans=0,res=0;cin>>n;
+    vi s(n), e(n);
+	while(n--)
+	{
+		int a,b,c;cin>>a>>b>>c;
+		if(s[a]||e[b])res+=c,s[b]=e[a]=1;
+		else s[a]=e[b]=1;
+		ans+=c;
+	}
+	cout<<min(res,ans-res);
 
 
    //debug(ans);
    //debugarr(v);
 
 
-  }
+  
 }
 

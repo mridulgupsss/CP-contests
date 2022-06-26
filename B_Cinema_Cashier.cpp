@@ -31,7 +31,7 @@
 #define debugmp(v) for(auto it:v){cout<<it.first<<" "<<it.second<<endl;}
 using namespace std;
 const int mod = 1e9 + 7;
-const int inf = 1e18;
+
 // count digits
 //  int countDigit(int n)
 // {
@@ -65,34 +65,64 @@ const int inf = 1e18;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-         
+
+ 
+
 
 // Actual Code Here : 
+
+
+const int N = 1050, K = 103;
+int n, k, a[N], gr[K][K], pr[K][K], dis[K][K];
+pair<int, int> out[N];
+
 signed main(){
+     
+	cin >> n >> k;
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	for (int i = 1; i <= k; i++) {
+		for (int j = 1; j <= k; j++) {
+			dis[i][j] = abs(i - (k+1)/2) + abs(j - (k+1)/2);
+		}
+	}
+	for (int i = 1; i <= k; i++) {
+		for (int j = 1; j <= k; j++) {
+			dis[i][j] += dis[i][j-1];
+		}
+	}
+ 
+	for (int x = 0; x < n; x++) {
+		pair<int, int> mn ={0,0};
+		int mv = LONG_LONG_MAX;
+		for (int i = 1; i <= k; i++) {
+			for (int j = 1; j <= k-a[x]+1; j++) {
+				if (pr[i][j+a[x]-1] - pr[i][j-1] == 0 && dis[i][j+a[x]-1] - dis[i][j-1] < mv) {
+					mn = {i,j};
+					mv = dis[i][j+a[x]-1] - dis[i][j-1];
+				}
+			}
+		}
+	
+		out[x] = mn;
+		if (mv == LONG_LONG_MAX) continue;
+ 
+		for (int i = mn.se; i < mn.se + a[x]; i++) {
+			gr[mn.fi][i] = 1;
+		}
+		for (int i = 1; i <= k; i++) {
+			pr[mn.fi][i] = pr[mn.fi][i-1] + gr[mn.fi][i];
+		}
+	}
+ 
+	for (int i = 0; i < n; i++) {
+		if (!out[i].fi) {
+			cout << -1 << endl;
+		}
+		else {
+			cout << out[i].fi << ' ' << out[i].se << ' ' << out[i].se + a[i]-1 << endl;
+		}
+	}
 
-
-    int t;
-    cin >> t;
-    while(t--){
-       int n; cin>>n;
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-           
-       }
-
-
-
-
-
-
-
-   //debug(ans);
-   //debugarr(v);
-
-
-  }
 }
-

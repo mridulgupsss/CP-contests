@@ -75,13 +75,17 @@ signed main(){
     cin >> t;
     while(t--){
        int n; cin>>n;
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-           
-       }
+       int a, b; int ans ;
+if(n%2==1){ans=-1;}
+else{
+int m =n/2;
+
+}
+ if(ans==0){
+    debug2(a,b)
+ }
+ else debug(ans);
+       
 
 
 

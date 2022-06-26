@@ -70,29 +70,51 @@ const int inf = 1e18;
 // Actual Code Here : 
 signed main(){
 
+int t;
+while(t--){
+    int n,k;
+    cin>>n>>k;
+    int a[n];
+    int f[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    for(int i=0;i<n-1;i++)
+    {
+        if(a[i]<2*a[i+1])
+        {
+            f[i]=1;
+        }
+        else
+        {
+            f[i]=0;
+        }
+    }
+    int ps[n];
+    ps[0]=0;
+    for(int i=1;i<n;i++)
+    {
+        ps[i] = ps[i-1] + f[i-1];
+    }
 
-    int t;
-    cin >> t;
-    while(t--){
-       int n; cin>>n;
-       vector<int> v; int s=0;
-       for(int i=0; i<n; i++){
-           int a; cin>>a;
-           v.pb(a);
-           s+=a;
-           
-       }
+    int c=0;
+    for(int i=0;i<n-k;i++)
+    {
+        if(ps[i+k]-ps[i] == k)
+        {
+            // trace(i);
+            c++;
+        }
+    }
+   debug(c);
+    
+}
 
 
-
-
-
-
-
-   //debug(ans);
    //debugarr(v);
 
 
-  }
+  
 }
 

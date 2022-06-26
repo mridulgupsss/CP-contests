@@ -74,14 +74,42 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n;
+       int n; cin>>n; 
+
+
        vector<int> v; int s=0;
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
-           s+=a;
-           
-       }
+   
+
+
+
+           }
+
+int flow=0, i=0, ans ;
+while(i<n){
+    if(v[i]){
+        if(i<n-1){
+        while((i<n-1) && ( v[i+1]!=0)){
+            i++;
+        }
+        }
+        flow++;
+    }
+
+
+    i++;
+}
+
+if(flow<=2){
+  ans =flow;
+}
+else ans =2;
+
+
+
+       
 
 
 
@@ -89,7 +117,8 @@ signed main(){
 
 
 
-   //debug(ans);
+
+   debug(ans);
    //debugarr(v);
 
 

@@ -74,12 +74,14 @@ signed main(){
     int t;
     cin >> t;
     while(t--){
-       int n; cin>>n;
+       int n,z; cin>>n>>z; int mx=LONG_LONG_MIN;
        vector<int> v; int s=0;
        for(int i=0; i<n; i++){
            int a; cin>>a;
            v.pb(a);
            s+=a;
+           mx= max((z|v[i]), mx);
+          
            
        }
 
@@ -89,7 +91,7 @@ signed main(){
 
 
 
-   //debug(ans);
+   debug(mx);
    //debugarr(v);
 
 
