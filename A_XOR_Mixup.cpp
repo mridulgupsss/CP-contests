@@ -74,13 +74,28 @@ signed main(){
 	while(t--){
 
 		int n; cin>>n;int x=0;
-		vi v; int s=0;
+		vi v; int s=0; 
 		for(int i=0; i<n; i++){
 			int a;
 			cin>>a;
 			v.pb(a);
-			s+=a; 
+			s+=a;
 
+		}
+		int ans ;
+		f(i, n){
+            int nn=0;
+           for(int j=i-1; j>=0; j--){
+            nn=nn^v[j];
+           }
+           for(int j=i+1; j<n; j++){
+            nn=nn^v[j];
+           }
+
+           if(v[i]==nn){
+            ans=nn;
+            break;
+           }
 		}
 
 
@@ -91,9 +106,8 @@ signed main(){
 
 
 
-
 		
-		 //debug(ans);
+		 debug(ans);
 		// debugarr(v);
 	}
 

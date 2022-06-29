@@ -73,15 +73,81 @@ signed main(){
 	int t; cin>>t;
 	while(t--){
 
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
+		int n; cin>>n;
+		vi v, v2; int s=0; map<int, int> mp;
+        int cnt=0; int flag=0;
 		for(int i=0; i<n; i++){
 			int a;
 			cin>>a;
-			v.pb(a);
-			s+=a; 
+            v.pb(a);
+			 
 
 		}
+        for(auto a: v){
+            mp[a]++;
+            if(mp[a]<4){
+                v2.pb(a);
+            }
+            if(a==0) cnt++;
+			else flag=1;
+        }
+
+        sort(all(v2));
+
+
+if(flag==1){
+         if( v2[0]+v2[v2.size()-1]==0 ){
+            if(n==(2*cnt)) cout<<"YES"<<endl;
+      else{
+
+        if(v2.size()>100){
+    cout<<"NO"<<endl;
+}
+else{
+ int ans=1;
+ int nn = v2.size();
+ f(i, nn){
+    if(ans==0) break;
+    loop(j,i+1, nn){
+        if(ans==0) break;
+        loop(k, j+1, nn){
+            if(mp.count(v2[i]+v2[j]+v2[k])==0){
+                ans=0; break;
+            }
+        }
+    }
+ }
+
+ if(ans==1) cout<<"YES"<<endl;
+else cout<<"NO"<<endl;
+}
+}
+
+        }
+        else{
+
+        if(v2.size()>100){
+    cout<<"NO"<<endl;
+}
+else{
+ int ans=1;
+ int nn = v2.size();
+ f(i, nn){
+    if(ans==0) break;
+    loop(j,i+1, nn){
+        if(ans==0) break;
+        loop(k, j+1, nn){
+            if(mp.count(v2[i]+v2[j]+v2[k])==0){
+                ans=0; break;
+            }
+        }
+    }
+ }
+
+ if(ans==1) cout<<"YES"<<endl;
+else cout<<"NO"<<endl;
+}
+}
 
 
 
@@ -89,6 +155,10 @@ signed main(){
 
 
 
+}
+else{
+cout<<"YES"<<endl;
+}
 
 
 

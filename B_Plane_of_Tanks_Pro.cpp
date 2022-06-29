@@ -66,47 +66,71 @@ const int inf = 1e18;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
          
+ 
+typedef long long int64;
+typedef vector<int> vint;
+ 
+#define SIZE(X) ((int)((X).size())) 
+#define ALL(X) (X).begin(), (X).end()
+#define FOR(IT, X) for (__typeof((X).begin()) IT = (X).begin(); IT != (X).end(); ++IT)
+ 
+template<typename T> string toStr(const T &x) { ostringstream os; os << x; return os.str(); }
+template<typename T> void toMin(T &x, const T &y) { x = min(x, y); }
+template<typename T> void toMax(T &x, const T &y) { x = max(x, y); }
+ 
+map<string, int> best;
+int lst[1005];
+ 
 
 // Actual Code Here : 
-signed main(){ 
+signed main(){
 
-	int t; cin>>t;
-	while(t--){
+    int n;
+    string name;
+    int score;
+ 
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> name >> score;
+        if (best.find(name) == best.end()) {
+            best.insert(make_pair(name, score));
+        } else {
+            toMax(best[name], score);
+        }
+    }
+    cout << SIZE(best) << endl;
+    int ptr = 0;
+    FOR (it, best) {
+        lst[ptr] = it->second;
+        ptr++;
+    }
+    sort(lst, lst + ptr);
+    FOR (it, best) {
 
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
+int p =(upper_bound(lst, lst + ptr, it->second) - lst);
+        string ans ="";
+    if (100 * p < SIZE(best) * 50) ans = "noob";
+    else if (100 * p < SIZE(best) * 80) ans= "random";
+    else if (100 * p < SIZE(best) * 90) ans= "average";
+    else if (100 * p < SIZE(best) * 99) ans= "hardcore";
+     else ans= "pro";
+        cout << it->first << " " << ans << "\n";
+    }
+    cout << flush;
+ 
 
-		}
-
-
-
-
-
-
+ 
 
 
 
 
-		
-		 //debug(ans);
-		// debugarr(v);
-	}
 
+
+
+   //debug(ans);
+   //debugarr(v);
+
+
+  
 }
-
-
-
-
-
-
-
-
-
-
-
 

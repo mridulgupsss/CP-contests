@@ -73,7 +73,7 @@ signed main(){
 	int t; cin>>t;
 	while(t--){
 
-		int n; cin>>n;int x=0;
+		int n, k; cin>>n>>k;int x=0;
 		vi v; int s=0;
 		for(int i=0; i<n; i++){
 			int a;
@@ -82,6 +82,25 @@ signed main(){
 			s+=a; 
 
 		}
+
+if(k<2){
+    int ans =0;
+    if(n%2!=0){
+        ans=n/2;
+    }
+    else ans=(n-2)/2;
+    debug(ans);
+} 
+else{
+    int ans=0;
+for(int i=1; i<n-1; i++){
+   if(v[i]>v[i-1]+v[i+1]) ans++;
+
+}
+debug(ans);
+}
+
+
 
 
 
