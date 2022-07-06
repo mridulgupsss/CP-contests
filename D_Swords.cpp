@@ -70,32 +70,29 @@ const int inf = 1e18;
 // Actual Code Here : 
 signed main(){ 
 
-	int t; cin>>t;
-	while(t--){
-
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
-
-		}
 
 
+    int n;
+    cin >> n;
+    vi a(n);
+    f(i, n) cin>>a[i];
+    int mx = *max_element(begin(a), end(a));
+    int g = 0;
+    int s = 0;
+    for (int i = 0; i < n; i++) {
+        int x = mx - a[i];
+        g = __gcd(g, x);
+        s += x;
+    }
+ 
+    if (!g) {
+        cout << "0 0\n";
+    } else {
+        cout << s / g << " " << g << endl;
+    }
 
 
 
-
-
-
-
-
-		
-		 //debug(ans);
-		// debugarr(v);
-	}
 
 }
 

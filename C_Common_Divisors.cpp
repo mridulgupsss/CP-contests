@@ -67,21 +67,21 @@ const int inf = 1e18;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
          
 
-// Actual Code Here : 
+// Actual Code Here :
+vi a(400005); 
 signed main(){ 
 
-	int t; cin>>t;
-	while(t--){
-
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
-
-		}
+    int n;cin>>n;
+    int GCD=0;
+    f(i,n)cin>>a[i], GCD=__gcd(GCD,a[i]);
+    int cnt=0;
+    for(int i=1;i*i<=GCD;i++){
+        if(GCD%i==0)cnt++;
+    }
+    cnt*=2;
+    int r=sqrt(GCD);
+    if(r*r==GCD)cnt--;
+    cout<<cnt;
 
 
 
@@ -93,9 +93,7 @@ signed main(){
 
 
 		
-		 //debug(ans);
-		// debugarr(v);
-	}
+
 
 }
 

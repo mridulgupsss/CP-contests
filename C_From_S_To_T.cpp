@@ -19,6 +19,7 @@
 #define pb push_back
 #define fi first
 #define se second 
+#define sz(a) a.size()
 #define endl "\n"
 #define lcm(a, b) int lcm(int a, int b) { return (a / __gcd(a, b)) * b; }
 #define setbits(x) __builtin_popcountll(x)
@@ -68,20 +69,44 @@ const int inf = 1e18;
          
 
 // Actual Code Here : 
+const int N=2e5+10;
 signed main(){ 
 
 	int t; cin>>t;
 	while(t--){
 
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
-
-		}
+        string s, t, p;
+        cin >> s >> t >> p;
+        int i = 0;
+        vector<int> need(26);
+        for (int j = 0; j < sz(t); j++) {
+                if (i < sz(s) && s[i] == t[j]) {
+                        i++;
+                }
+                else {
+                        need[t[j] - 'a']++;
+                }
+        }
+        int f=0;
+        if (i != sz(s)) {
+                NO
+                f=1;
+        }
+if(f==0){
+        vector<int> cnt(26);
+        for (char c : p) {
+                cnt[c - 'a']++;
+        }
+        int ff=0;
+        for (int i = 0; i < 26; i++) {
+                if (need[i] > cnt[i]) {
+                NO
+                        ff=1;
+                        break;
+                }
+        }
+        if(ff==0)YES
+}
 
 
 

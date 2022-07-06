@@ -69,33 +69,16 @@ const int inf = 1e18;
 
 // Actual Code Here : 
 signed main(){ 
-
-	int t; cin>>t;
-	while(t--){
-
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
-
-		}
-
-
-
-
-
-
-
-
-
-
-		
-		 //debug(ans);
-		// debugarr(v);
-	}
+	int w, h;
+	cin>>w>>h;
+	int ans = 1;
+	int sz = w + h;
+	int mod = 998244353;
+	while(sz--) {
+		ans = ans * 2;
+		ans %= mod;
+	}	
+	debug(ans);
 
 }
 

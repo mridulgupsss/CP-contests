@@ -67,35 +67,41 @@ const int inf = 1e18;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
          
 
-// Actual Code Here : 
+// Actual Code Here :
+
 signed main(){ 
 
-	int t; cin>>t;
-	while(t--){
-
-		int n; cin>>n;int x=0;
-		vi v; int s=0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
-
+	int n;
+	cin >> n;
+	string s;
+	cin >> s;
+	vi res(1001);
+	f(i, n)
+	{
+		int a, b;
+		cin >> a >> b;
+		int f = s[i] - '0';
+		int cnt = 0;
+		f(i, 1001)
+		{
+			if (i >= b)
+			{
+				if (cnt == 0)
+				{
+					f ^= 1;
+					cnt = a;
+				}
+				cnt--;
+			}
+			res[i] += f;
 		}
-
-
-
-
-
-
-
-
-
-
-		
-		 //debug(ans);
-		// debugarr(v);
 	}
+	int ans = 0;
+	f(i, 1001)
+	{
+		ans = max(ans, res[i]);
+	}
+debug(ans)
 
 }
 
