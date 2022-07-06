@@ -73,16 +73,27 @@ signed main(){
 	int t; cin>>t;
 	while(t--){
 
-		int n; cin>>n;int x=0;
-		vi v; int s=0; int ans =0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
+		int x, y;
+        cin>>x>>y;
+        int xx =x^2;
+        int yy =y^2;
+        int z=x^y;
+        int zz =z^2;
+        vi v(3, -1);
+        int i=0;
+        if((xx&1)!=0) {
+            v[i]=xx; i++;
+        }
+        if((yy&1)!=0){
+            v[i]=yy; i++;
+        }
+        if((zz&1)!=0) {
+            v[i]=zz; i++;
+        }
 
-		}
+        if(v[2]==-1) v[2]=2;
 
+sort(all(v));
 
 
 
@@ -94,7 +105,7 @@ signed main(){
 
 		
 		 //debug(ans);
-		// debugarr(v);
+	 debugarr(v);
 	}
 
 }

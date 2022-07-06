@@ -27,7 +27,7 @@
 #define debug3(a, b, c) cout<<a<<" "<<b<<" "<<c<<endl; 
 #define debug4(a, b, c, d) cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;  
 #define debug5(a, b, c, d, e) cout<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<e<<endl;  
-#define debugarr(v) for(auto i : v){cout<<i<<" ";}cout<<endl;
+#define debugarr(v) for(auto i : v){cout<<i;}cout<<endl;
 #define debugmp(v) for(auto it:v){cout<<it.first<<" "<<it.second<<endl;}
 using namespace std;
 const int mod = 1e9 + 7;
@@ -73,28 +73,68 @@ signed main(){
 	int t; cin>>t;
 	while(t--){
 
-		int n; cin>>n;int x=0;
-		vi v; int s=0; int ans =0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
 
-		}
+        int n ; string s;
+        cin>>n>>s;
+        set<char> st;
+        st.insert('a');
+        st.insert('e');
+        st.insert('i');
+        st.insert('o');
+        st.insert('u');
+vi v;  string part=""; char chh='1';
+ string scpart="";
+for(int i=0; i<n; i++){
+    char ch =s[i];
+    if(st.find(ch)!=st.end()){
+        v.pb(i);
+    }
+}
+if(v.size()!=0){
+int i=n-1;
+while(i>=0){
+    int ch=s[i];
+    if(st.find(ch)!=st.end()){
+       if(chh=='0'){
+        part+=ch;
+       }
+       else 
+        scpart+=ch;
+       if(chh=='1')chh='0';
+       else chh='1';
+    }
+    else{
+       if(chh=='0'){
+        part+=ch;
+       }
+       else 
+        scpart+=ch;
+       
+    }
+
+    i--;
+}
+
+
+reverse(all(scpart));
+f(i, part.size()){
+    cout<<part[i];
+}
+f(i, scpart.size()){
+    cout<<scpart[i];
+}
+cout<<endl;
+}
+else{
+  for(auto ch: s){
+    cout<<ch;
+  }  cout<<endl;
+}
 
 
 
 
-
-
-
-
-
-
-		
-		 //debug(ans);
-		// debugarr(v);
+	
 	}
 
 }

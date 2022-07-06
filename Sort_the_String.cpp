@@ -73,16 +73,30 @@ signed main(){
 	int t; cin>>t;
 	while(t--){
 
-		int n; cin>>n;int x=0;
-		vi v; int s=0; int ans =0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
+		int n; cin>>n;int one=0, z=0;
+string s ;
+cin>>s;
+for(auto ch: s){
+    if(ch=='1') one++;
+    else z++;
+}
 
-		}
+if(one==0 || z==0) cout<<0<<endl;
+else{
+    int i=0;
+  while(s[i]=='0') i++;
+  int ans =0;
+  int f=1;
+  while(i<s.size()){
+    if(s[i]=='0' && f==1){
+        f=0;
+        ans++;
 
+    }
+    else if(s[i]=='1') f=1; 
+    i++;
+  }debug(ans);
+}
 
 
 

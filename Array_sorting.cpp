@@ -74,14 +74,37 @@ signed main(){
 	while(t--){
 
 		int n; cin>>n;int x=0;
-		vi v; int s=0; int ans =0;
-		for(int i=0; i<n; i++){
-			int a;
-			cin>>a;
-			v.pb(a);
-			s+=a; 
+		vi v(n+1), ans;
+        map<int, int> mp;
+		for(int i=1; i<=n; i++){
+           cin>>v[i];
+			
+            mp[v[i]]=i;
 
 		}
+for(int i=1; i<n; i++){
+    int idx=v[i];
+    if(idx==mp[idx]){
+
+    }
+    else{
+    int diff=abs(mp[idx]-idx);
+    ans.pb(diff);
+    }
+
+}
+if(ans.size()>0){
+    int final_ans = ans[0];
+    int m= ans.size();
+    int i=0;
+    while(i<m){
+        final_ans=__gcd(ans[i++], final_ans);
+    }
+    debug (final_ans);
+}
+
+
+
 
 
 
@@ -93,7 +116,7 @@ signed main(){
 
 
 		
-		 //debug(ans);
+		 
 		// debugarr(v);
 	}
 
