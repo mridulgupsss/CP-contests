@@ -67,24 +67,36 @@ const int inf = 1e18;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
          
 
-// Actual Code Here : 
-signed main(){
-int h,w,i,j,x,c,r;
-string s[600];
-	for(cin>>h>>w;i<h;i++)for(cin>>s[i],j=0;j<w;j++)r+=s[i][j]=='*';
-	for(i=1;i<h-1;i++)for(j=1;j<w-1;j++)if(s[i][j]=='*'
-	&&s[i][j-1]=='*'
-	&&s[i][j+1]=='*'
-	&&s[i-1][j]=='*'
-	&&s[i+1][j]=='*'
-	){
-		for(x=i;x<h&&s[x][j]=='*';x++)c++;
-		for(x=i;x>=0&&s[x][j]=='*';x--)c++;
-		for(x=j;x<w&&s[i][x]=='*';x++)c++;
-		for(x=j;x>=0&&s[i][x]=='*';x--)c++;
-		return cout<<(r==c-3?"YES":"NO"),0;
-	}
-	cout<<"NO";
+// Actual Code Here :
+#define mod 1000000007;
+ int arr[26][200000];
+signed main()
+{
+    int n, m;
+    string s;
+    cin >> n >> s >> m;
+    int cnt[26] = {};
+    for(int i = 0; i < s.size(); i++)
+    {
+        cnt[s[i]-'a']++;
+        arr[s[i]-'a'][cnt[s[i]-'a']] = i+1;
+    }
+    while(m--)
+    {
+        string s2;
+        cin >> s2;
+        int ans = 0;
+        int cnt2[26] = {};
+        for(int i = 0; i < s2.size(); i++)
+        {
+            cnt2[s2[i]-'a']++;
+            ans = max(arr[s2[i]-'a'][cnt2[s2[i]-'a']],ans);
+        }
+
+        debug(ans);
+ 
+    }
+    return 0;
 }
 
 

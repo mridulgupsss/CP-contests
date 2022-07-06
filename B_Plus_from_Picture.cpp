@@ -68,9 +68,9 @@ const int inf = 1e18;
          
 
 // Actual Code Here : 
-signed main(){
 int h,w,i,j,x,c,r;
 string s[600];
+signed main(){
 	for(cin>>h>>w;i<h;i++)for(cin>>s[i],j=0;j<w;j++)r+=s[i][j]=='*';
 	for(i=1;i<h-1;i++)for(j=1;j<w-1;j++)if(s[i][j]=='*'
 	&&s[i][j-1]=='*'
