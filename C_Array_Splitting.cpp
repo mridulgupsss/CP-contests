@@ -2,7 +2,7 @@
  
 #include "bits/stdc++.h"
 #include <string>
-#define int long long
+
 #define NFS ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end() //Forward traversal
 #define rall(x) (x).rbegin(), (x).rend() //Backward traversal
@@ -72,14 +72,14 @@ signed main(){
     int n, k; cin >> n >> k;
     int x; cin >> x;
     int f = x;
-    vector<int> diff(n - 1);
+    vector<int> diff(n );
     for (int i = 1; i < n; i++) {
         int y; cin >> y;
         diff[i - 1] = y - x;
         x = y;
     }
-    sort(diff.rbegin(), diff.rend());
-    cout << x - f - accumulate(diff.begin(), diff.begin() + k - 1, 0ll) << '\n';
+    sort(rall(diff));
+    cout << x - f - accumulate(diff.begin(), diff.begin() + k - 1, 0) << endl;
 
 }
 

@@ -69,17 +69,15 @@ const int inf = 1e18;
 
 // Actual Code Here : 
 signed main(){ 
-    int n, k; cin >> n >> k;
-    int x; cin >> x;
-    int f = x;
-    vector<int> diff(n - 1);
-    for (int i = 1; i < n; i++) {
-        int y; cin >> y;
-        diff[i - 1] = y - x;
-        x = y;
-    }
-    sort(diff.rbegin(), diff.rend());
-    cout << x - f - accumulate(diff.begin(), diff.begin() + k - 1, 0ll) << '\n';
+     int n,i,ans;
+     string s;
+     cin >> s;
+     char c='z';
+     for(i=0;i<s.size();i++)
+	 {
+		cout << (c<s[ i ]?"Ann\n":"Mike\n");
+		c=min(c,s[ i ]);
+	 }
 
 }
 

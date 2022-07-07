@@ -70,22 +70,21 @@ const int inf = 1e18;
 // Actual Code Here : 
 signed main(){ 
 
-	int t; cin>>t;
-	while(t--){
+
 
 	int n; cin >> n;
-	long long int info[2][n];
+ int info[2][n];
  
 	for (int a = 0; a < 2; a++){
-		for (long long int b = 0; b < n; b++){
+		for (int b = 0; b < n; b++){
 			cin >> info[a][b];
 		}
 	}
  
-	long long int first = sqrt(info[0][1]*info[0][2]/info[1][2]);
+	int first = sqrt(info[0][1]*info[0][2]/info[1][2]);
 	cout << first << " ";
  
-	for (long long int i = 1; i < n; i++){
+	for ( int i = 1; i < n; i++){
 		cout << info[0][i]/first << " ";
 	}
 
@@ -98,10 +97,7 @@ signed main(){
 
 
 
-		
-		 //debug(ans);
-		// debugarr(v);
-	}
+	
 
 }
 
