@@ -86,10 +86,10 @@ else if(ct==1) ans=1;
 else if(ct==4) ans=2;
 else{
     if(a==1 && d==1){
-        ans=2;
+        ans=1;
     }
     else if(b==1 && c==1){
-ans=2;
+ans=1;
     }
     else ans =1;
 }
