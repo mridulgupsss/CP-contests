@@ -69,47 +69,47 @@ const int inf = 1e18;
 
 // Actual Code Here : 
 
-
- 
-int const MX=2e5+10;
-int const INF=1e9;
- 
- 
-
-bool test[MX];
- 
-signed main()
-{
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
- 
-    int n;cin>>n;
-    queue<int> q;
-    for(int i=0;i<n;i++){
-        int x;cin>>x;
-        q.push(x);
-    }
-    int res=0;
-    for(int i=0;i<n;i++){
-        int x;cin>>x;
-        test[x]=1;
-        int top=q.front();
-        int find=0;
-        while(!q.empty()&&test[top]==1){
-            if(top==x)find=1;
-            q.pop();
-            top=q.front();
+int cnt[1000010];
+signed main(){
+int t ;
+cin>>t;
+while(t--){
+    int n, k, d;
+    cin >> n >> k >> d;
+    vector<int> a(n);
+    f(i, n) cin >> a[i];
+    int cd = 0;
+    int ans = k;
+    for (int i = 0; i + 1 < d; i++) {
+        if (cnt[a[i]] == 0) {
+            cd++;
         }
-        if(!find)res++;
+        cnt[a[i]]++;
+    }
+    for (int i = d - 1; i < n; i++) {
+        if (cnt[a[i]] == 0) {
+            cd++;
+        }
+        cnt[a[i]]++;
+        ans = min(ans, cd);
+        cnt[a[i - d + 1]]--;
+        if (cnt[a[i - d + 1]] == 0) {
+            cd--;
+        }
     }
  
-    cout<<res;
+    cout << ans << "\n";
  
-   
+    for (int i : a) {
+        cnt[i] = 0;
+    }
+
+
 
 
     // debug(ans)
    // debugarr(v)
-
+}
 
 }
 

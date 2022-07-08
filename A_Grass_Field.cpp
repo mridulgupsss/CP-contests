@@ -69,47 +69,35 @@ const int inf = 1e18;
 
 // Actual Code Here : 
 
-
- 
-int const MX=2e5+10;
-int const INF=1e9;
- 
- 
-
-bool test[MX];
- 
-signed main()
-{
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
- 
-    int n;cin>>n;
-    queue<int> q;
-    for(int i=0;i<n;i++){
-        int x;cin>>x;
-        q.push(x);
+signed main(){
+int t ;
+cin>>t;
+while(t--){
+    int a,b,c,d;
+    cin>>a>>b>>c>>d; int ct=0;
+    if(a==1) ct++;
+    if(b==1) ct++;
+    if(c==1) ct++;
+    if(d==1) ct++;
+    int ans=0;
+if(ct==0) ans=0;
+else if(ct==3) ans=2;
+else if(ct==1) ans=1;
+else if(ct==4) ans=2;
+else{
+    if(a==1 && d==1){
+        ans=2;
     }
-    int res=0;
-    for(int i=0;i<n;i++){
-        int x;cin>>x;
-        test[x]=1;
-        int top=q.front();
-        int find=0;
-        while(!q.empty()&&test[top]==1){
-            if(top==x)find=1;
-            q.pop();
-            top=q.front();
-        }
-        if(!find)res++;
+    else if(b==1 && c==1){
+ans=2;
     }
- 
-    cout<<res;
- 
-   
+    else ans =1;
+}
 
 
-    // debug(ans)
+    debug(ans)
    // debugarr(v)
-
+}
 
 }
 
