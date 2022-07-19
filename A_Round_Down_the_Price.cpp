@@ -73,15 +73,17 @@ signed main(){
 int t ;
 cin>>t;
 while(t--){
-    int n; cin>>n; int s=0;
-    vi v;
-    for(int i=0; i<n; i++){
-        int a ;
-        cin>>a;
-        v.pb(a);
-        s+=a; 
+     
+        int n;
+        cin >> n;
+       int k = 1;
+        while (k * 10 <= n)
+        {
+            k *= 10;
+        }
+        cout << n - k << endl;
 
-    }
+
 
 
 

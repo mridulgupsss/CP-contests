@@ -73,24 +73,29 @@ signed main(){
 int t ;
 cin>>t;
 while(t--){
-    int n; cin>>n; int s=0;
-    vi v;
-    for(int i=0; i<n; i++){
-        int a ;
-        cin>>a;
-        v.pb(a);
-        s+=a; 
-
-    }
-
-
-
-
-    // debug(ans)
-   // debugarr(v)
+		int ans = 0; string s ;cin>>s;
+		vector<char>v;
+		v.push_back(s[0]);
+		for (int i = 1; i < s.length(); i++) {
+			char c = s[i];
+			for (int j = 0; j < v.size(); j++) {
+				if (c == v[j])break;
+				if (j == v.size() - 1) {
+					if (v.size() == 3) {
+						ans++;
+						v.clear();
+					}
+					v.push_back(c);
+				}
+			}
+		}
+		if (v.size() != 0)ans++;
+		cout << ans << endl;
+	
+}
 }
 
-}
+
 
 
 

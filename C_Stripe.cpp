@@ -70,25 +70,23 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int t ;
-cin>>t;
-while(t--){
-    int n; cin>>n; int s=0;
-    vi v;
-    for(int i=0; i<n; i++){
-        int a ;
-        cin>>a;
-        v.pb(a);
-        s+=a; 
-
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    f(i,n)
+        cin >> v[i];
+    vector<int> cum1(n,0),cum2(n,0);
+    cum1[0] = v[0];
+    cum2.back() = v.back();
+    f(i,n){
+        cum1[i] = v[i]+cum1[i-1];
+        cum2[n-i-1] = v[n-i-1] + cum2[n-i];
     }
-
-
-
-
-    // debug(ans)
-   // debugarr(v)
-}
+    int res = 0;
+    f(i,n){
+        res += cum1[i-1] == cum2[i];
+    }
+    cout << res << endl;
 
 }
 

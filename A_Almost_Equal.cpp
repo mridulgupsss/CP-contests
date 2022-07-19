@@ -70,25 +70,32 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int t ;
-cin>>t;
-while(t--){
-    int n; cin>>n; int s=0;
-    vi v;
-    for(int i=0; i<n; i++){
-        int a ;
-        cin>>a;
-        v.pb(a);
-        s+=a; 
 
-    }
-
-
-
-
-    // debug(ans)
-   // debugarr(v)
-}
+   int t;
+   cin>>t;
+ 
+   while(t--)
+   {
+      int n,f=0;
+      cin>>n;
+       int p=0,c=0;
+       for(int i=1;i<=n;i++)
+       {
+           int x,y;
+           cin>>x>>y;
+           if(x-p<y-c || x<p || y<c || x<y)
+             f=1;
+               
+           p=x;
+           c=y;
+       }
+       if(f==0) cout<<"YES\n";
+       else cout<<"NO\n";
+       
+           
+     
+      
+   }
 
 }
 

@@ -73,16 +73,40 @@ signed main(){
 int t ;
 cin>>t;
 while(t--){
-    int n; cin>>n; int s=0;
-    vi v;
-    for(int i=0; i<n; i++){
-        int a ;
-        cin>>a;
-        v.pb(a);
-        s+=a; 
-
+    int n,x;
+    cin>>n>>x;
+    int a[n];
+    int b[x],c[x];
+    f(i,n){
+        cin>>a[i];
     }
-
+    map<int,int>m;
+    map<int,int>m2;
+    f(i,n){
+        m[a[i]]=i;
+    }
+    f(i,n){
+        if(m2.find(a[i]) != m2.end()){
+            continue;
+        }
+        m2[a[i]]=i;
+    }
+    
+    f(i,x){
+        cin>>b[i]>>c[i];
+    }
+    f(i,x){
+        if(m2.find(b[i]) == m2.end()||m2.find(c[i]) == m2.end()){
+            cout<<"NO"<<endl;
+            continue;
+        }
+        if(m2[b[i]]<=m[c[i]]){
+            cout<<"YES"<<endl;
+        }
+        else{
+            cout<<"NO"<<endl;
+        }
+    }
 
 
 

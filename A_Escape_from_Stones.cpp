@@ -70,25 +70,25 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int t ;
-cin>>t;
-while(t--){
-    int n; cin>>n; int s=0;
-    vi v;
-    for(int i=0; i<n; i++){
-        int a ;
-        cin>>a;
-        v.pb(a);
-        s+=a; 
 
-    }
-
-
-
-
-    // debug(ans)
-   // debugarr(v)
-}
+      string s;cin>>s;
+      vector<int>v(s.size());
+      int left=0,right=s.size()-1;
+      for (int i=1;i<=s.size();i++)
+      {
+          if (s[i-1]=='l')
+          {
+              v[right]=i;
+              right--;
+          }
+          else 
+          {
+              v[left]=i;
+              left++;
+          }
+      }
+      for (int i=0;i<s.size();i++)
+      cout<<v[i]<<'\n';
 
 }
 
