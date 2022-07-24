@@ -72,14 +72,56 @@ const int inf = 1e18;
 signed main(){
 int t ;
 cin>>t;
-    while (t--) {
-        int n ; cin >>n; int ans;
-        if(n==1 ) cout<<1<<endl;
+    while (t--) { 
+        int n,m ; cin >>n>>m; 
+        vi v; int sum=0;
+        f(i, n){
+            int x; sum+=x;
+            cin>>x; v.pb(x);
+        }
+        vpii vv;
+        f(i, m){
+            int a, b;
+            cin>>a>>b;
+            vv.pb({a, b});
+        }
+
+        vi freq(n, 0);
+        f(i, m){
+            freq[vv[i].fi-1]++;
+            freq[vv[i].se-1]++;
+        }
+        if(m==0) cout<<0<<endl;
+        else if(m==2) cout<<0<<endl;
         else{
-          for(int i=2;i<=n;i++){
-            cout<<i<<" ";
-          }
-          cout<<1<<endl;
+            int rem =m%2;
+            int ans =0;
+            if(rem!=0){
+              int mn =sum;
+              int idx=0;
+              while(idx<n){
+                if(freq[idx]%2!=0 && mn>v[idx]){
+                     mn=v[idx];
+                } 
+                idx++;
+              }
+
+              int i=0;
+              while(i<m){
+                if(freq[vv[i].fi-1]%2==0){
+                    if(freq[vv[i].se-1]%2==0){
+                        int value = v[vv[i].fi-1]+v[vv[i].se-1];
+                        if(mn>value) mn=value;
+                    }
+                }
+                i++;
+              }
+
+              ans=mn;
+            }
+
+            debug(ans);
+            
         }
     }
 

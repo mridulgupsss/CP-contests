@@ -70,18 +70,22 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int t ;
-cin>>t;
-    while (t--) {
-        int n ; cin >>n; int ans;
-        if(n==1 ) cout<<1<<endl;
-        else{
-          for(int i=2;i<=n;i++){
-            cout<<i<<" ";
-          }
-          cout<<1<<endl;
-        }
-    }
+
+
+
+        int i,j;
+       int n1,n2,n3,n4;
+       cin>>n1>>n2>>n3>>n4;
+       if(n1==n4 && ((n3==0)||(n1>0)))
+       cout<<"1\n";
+       else
+       cout<<"0\n";
+
+
+
+    // debug(ans)
+   // debugarr(v)
+
 
 }
 

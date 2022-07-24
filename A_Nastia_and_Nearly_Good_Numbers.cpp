@@ -73,13 +73,21 @@ signed main(){
 int t ;
 cin>>t;
     while (t--) {
-        int n ; cin >>n; int ans;
-        if(n==1 ) cout<<1<<endl;
-        else{
-          for(int i=2;i<=n;i++){
-            cout<<i<<" ";
-          }
-          cout<<1<<endl;
+        int a, b;
+        cin >> a >> b;
+        if (b == 2) {
+            cout << "YES\n";
+            cout << a << " " << 3 * a << " " << 4 * a << "\n";
+            continue;
+        }
+        int x = a;
+        int y = (b - 1) * a;
+        int z = a * b;
+        if (x == y or y == z or z == x or b == 1) {
+            cout << "NO\n";
+        } else {
+            cout << "YES\n";
+            cout << a << " " << (b - 1) * a << " " << a * b << "\n";
         }
     }
 
