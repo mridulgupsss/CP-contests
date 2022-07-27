@@ -70,22 +70,23 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-    int n;
-    cin >> n;
-    int arr[2*n];
-    f(i,2*n)
-    {
-        cin >> arr[i];
+    int t; cin>>t;
+    while(t--){
+        int n; cin>>n;
+        vi v; int sum=0;
+        for(int i=0; i<n; i++){
+            int a ;
+            cin>>a;
+            v.pb(a);
+            sum+=a;
+        }
+
+
+
+        //debug(ans);
+        //debugarr(v);
+
     }
-    sort(arr,arr+2*n);
-    int a=0,b=0;
-    f(i,n) a+=arr[i];
-    loop(i,n,2*n-1) b+=arr[i];
-    if(a==b)
-    {
-        cout << -1;
-    }
-    else f(i,2*n) cout << arr[i] << ' ';
 
 }
 
