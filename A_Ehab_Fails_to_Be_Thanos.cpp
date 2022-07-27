@@ -77,10 +77,10 @@ signed main(){
     {
         cin >> arr[i];
     }
-    sort(arr,arr+2*n);
+    sort(arr,arr+n*2);
     int a=0,b=0;
     f(i,n) a+=arr[i];
-    loop(i,n,2*n-1) b+=arr[i];
+    loop(i,n,2*n-1) b=b+arr[i];
     if(a==b)
     {
         cout << -1;
