@@ -70,33 +70,39 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int z; cin >> z; 
-  while (z--) {
-    auto solve = [&]() {
-      int n; cin >> n;
-      vector<int> a(n + 1);
-      int sum = 0;
-      for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        sum += a[i]; 
-      }
-      if (sum) return 0;
-      sum = 0;
-      for (int i = n; i >= 1; i--) {
-        if (a[i] > 0) {
-          if (a[i] > sum) return 0;
-          sum -= a[i];
-          if (i != 1 && sum <= 0) return 0;
-        } else {
-          sum += -a[i];
-        }
-      }
-      if (sum != 0) return 0;
-      return 1;
-    };
-    if (!solve()) cout << "No" << endl;
-    else cout << "Yes" << endl;
-  }
+int t; cin>>t;
+while(t--){
+		int a, b, s1 = 0, s2 = 0, min=0, a_temp;
+		cin >> a >> b;
+		a_temp = a;
+		if(b==1)
+		{
+			b++;s2++;
+		}
+		while (a_temp > 0)
+		{
+			a_temp /= b;
+			s1++;
+		}
+ 
+		while (true)
+		{
+			min = s1 + s2;
+			a_temp = a;
+			s1 = 0;
+			b++; s2++;
+			while (a_temp > 0)
+			{
+				a_temp /= b;
+				s1++;
+			}
+			if (s1 + s2 > min)
+			{
+				cout << min << "\n";
+				break;
+			}
+		}
+}
 
 }
 

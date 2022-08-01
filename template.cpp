@@ -70,23 +70,7 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-    int t; cin>>t;
-    while(t--){
-        int n; cin>>n;
-        vi v; int sum=0;
-        for(int i=0; i<n; i++){
-            int a ;
-            cin>>a;
-            v.pb(a);
-            sum+=a;
-        }
 
-
-
-        //debug(ans);
-        //debugarr(v);
-
-    }
 
 }
 

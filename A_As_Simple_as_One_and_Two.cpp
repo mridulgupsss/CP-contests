@@ -20,6 +20,7 @@
 #define fi first
 #define se second 
 #define endl "\n"
+#define size(s) s.size();
 #define lcm(a, b) int lcm(int a, int b) { return (a / __gcd(a, b)) * b; }
 #define setbits(x) __builtin_popcountll(x)
 #define debug(a) cout<<a<<endl;
@@ -70,33 +71,33 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int z; cin >> z; 
-  while (z--) {
-    auto solve = [&]() {
-      int n; cin >> n;
-      vector<int> a(n + 1);
-      int sum = 0;
-      for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        sum += a[i]; 
-      }
-      if (sum) return 0;
-      sum = 0;
-      for (int i = n; i >= 1; i--) {
-        if (a[i] > 0) {
-          if (a[i] > sum) return 0;
-          sum -= a[i];
-          if (i != 1 && sum <= 0) return 0;
-        } else {
-          sum += -a[i];
+int t; cin>>t;
+while(t--){
+        string s;
+        cin >> s;
+        int n = size(s);
+        vi ans;
+        for (int i = 0; i < n; ++i) {
+            if (i + 4 < n) {
+                if (s[i] == 't' and s[i + 1] == 'w' and s[i + 2] == 'o' and s[i + 3] == 'n' and s[i + 4] == 'e')
+                    ans.pb(i + 2), i += 4;
+            }
+            if (i + 2 < n) {
+                if (s[i] == 't' and s[i + 1] == 'w' and s[i + 2] == 'o') {
+                    ans.pb(i + 1);
+                    i += 2;
+                }
+                else if (s[i] == 'o' and s[i + 1] == 'n' and s[i + 2] == 'e') {
+                    ans.pb(i + 1);
+                    i += 2;
+                }
+            }
         }
-      }
-      if (sum != 0) return 0;
-      return 1;
-    };
-    if (!solve()) cout << "No" << endl;
-    else cout << "Yes" << endl;
-  }
+        cout << size(ans) ;
+        cout<< endl;
+        for (int& i : ans) cout << i + 1 << " ";
+        cout << endl;
+}
 
 }
 

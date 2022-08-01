@@ -70,33 +70,57 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
-int z; cin >> z; 
-  while (z--) {
-    auto solve = [&]() {
-      int n; cin >> n;
-      vector<int> a(n + 1);
-      int sum = 0;
-      for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-        sum += a[i]; 
-      }
-      if (sum) return 0;
-      sum = 0;
-      for (int i = n; i >= 1; i--) {
-        if (a[i] > 0) {
-          if (a[i] > sum) return 0;
-          sum -= a[i];
-          if (i != 1 && sum <= 0) return 0;
-        } else {
-          sum += -a[i];
+int t; cin>>t;
+while(t--){
+   int n;
+    cin >> n;
+ 
+    vector<string> mat(n);
+    for(int i=0; i<n; i++){
+        cin >> mat[i];
+    }
+ 
+    int ans{};
+    int s, o, z, x, y;
+    s = n/2;
+ 
+    if( (n%2) != 0 )
+        for(int i=1; (n/2 - i) >= 0; i++){
+            o = 0;
+            z = 0;
+            y = (n/2 - i);
+            x = (n/2);
+            for(int i=0; i<4; i++){
+                // Compute
+                z += (mat[y][x] == '0');
+                o += (mat[y][x] == '1');
+                swap(y, x);
+                x = (n-1) - x;
+            }
+            ans += min(o, z);
         }
-      }
-      if (sum != 0) return 0;
-      return 1;
-    };
-    if (!solve()) cout << "No" << endl;
-    else cout << "Yes" << endl;
-  }
+ 
+    // Outer Squares Check
+    for(int i=0; i<s; i++){
+        for(int j=0; j<s; j++){
+            o = 0;
+            z = 0;
+            y = i; 
+            x = j;
+            for(int i=0; i<4; i++){
+                // Compute
+                z += (mat[y][x] == '0');
+                o += (mat[y][x] == '1');
+                swap(y, x);
+                x = (n-1) - x;
+            }
+            ans += min(o, z);
+        }
+    }
+ 
+    cout << ans << endl;
+ 
+}
 
 }
 
