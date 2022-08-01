@@ -70,7 +70,16 @@ const int inf = 1e18;
 // Actual Code Here : 
 
 signed main(){
+int t; cin>>t;
+while(t--){
+    int n; cin>>n;
+    vi v(n);
+    f(i, n){
+        cin>>v[i];
+    }
 
+    
+}
 
 }
 
